@@ -2,17 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '@fortawesome/fontawesome-svg-core/styles.css';
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --hero-bg:#1f332b;
+  --para-color:#374151;
+  --section-light-bg:#f3f4f6;
+  --section-dark-bg:#ebefe6;
+  --hero-button-bg:#97f675;
+  --nav-button-bg:#354740;
+  --subheading-color:#6b7280;
+  --button-dark-bg:#234244;
+  --button-border-color:#dcdde0;
+  
+
+  /* dashboard */
+  --navbar-bg-admin:rgb(42, 5, 66);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 0,0,0;
+    --background-start-rgb:255, 255, 255
+    --background-end-rgb:255, 255, 255
   }
 }
 
@@ -24,4 +36,53 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.hero-bg, .nav, .main{
+  background-color: var(--hero-bg);
+}
+.secondHalfHeading{
+  color:var(--hero-button-bg) ;
+}
+.footer{
+  background-color: var(--section-dark-bg);
+}
+.darkbtn{
+  background-color: var(--button-dark-bg);
+  color: #fff;
+  border-color: var(--button-border-color);
+}
+.testimonials{
+  background-color: var(--hero-bg);
+}
+.text-color{
+  color:var(--hero-button-bg)
+}
+.btn{
+  background-color: var(--hero-button-bg);
+}
+.navBtn{
+  background-color: var(--nav-button-bg);
+}
+.iconColor{
+  font-size: x-large;
+}
+.glassBox{
+  background-color: var(--hero-bg) ;/* Adjust the opacity as needed */
+  backdrop-filter: blur(10px); /* Adjust the blur as needed */
+  border-radius: 10px; /* Adjust the border-radius as needed */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Add a border for better visibility */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  color: #fff;
+  padding: 20px;
+}
+.glassBox:hover{
+  background-color: var(--nav-button-bg);
+}
+.formContainerOutsideBg{
+  background-color: var(--hero-bg);
+}
+
+.dashboard{
+  background-color: var(--navbar-bg-admin);
 }
