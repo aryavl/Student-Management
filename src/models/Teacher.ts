@@ -16,6 +16,10 @@ subject:{
 },
 type:{
     type:String
+},
+isVerified:{
+    type:Boolean,
+    default:false
 }
 },{timestamps:true})
 
