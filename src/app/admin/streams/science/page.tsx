@@ -3,11 +3,15 @@ import GoToLogin from '@/components/admin/GoToLogin';
 import ScienceBatchContent from '@/components/admin/ScienceBatch';
 import SideNavbar from '@/components/admin/SideNavbar';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { notFound, useRouter } from 'next/navigation';
 import React from 'react'
 
+
+
+
 const ScienceBatch = () => {
-    const router = useRouter();
+    
+    
     const { data: session } = useSession();
 
     return (

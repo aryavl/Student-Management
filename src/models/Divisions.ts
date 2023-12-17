@@ -1,8 +1,8 @@
-import { timeStamp } from "console";
+
 import mongoose, { Schema } from "mongoose";
 
 const divisionSchema = new Schema({
-    class :{
+    className :{
         type:String
     },
     stream:{
@@ -11,10 +11,14 @@ const divisionSchema = new Schema({
     division:{
         type:String
     },
+    isList:{
+        type:Boolean,
+        default:true
+    },
     students:[{
         type:String
     }    
-    ]
+    ],
 },{timestamps:true})
 
-export default mongoose.models.Division || mongoose.model("Division",divisionSchema)
+export default mongoose.models.DivisionList || mongoose.model("DivisionList",divisionSchema)
