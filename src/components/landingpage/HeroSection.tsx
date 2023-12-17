@@ -36,7 +36,7 @@ const HeroSection = () => {
                 className="inline-block text-color text-3xl font-bold tracking-tight sm:text-4xl
               sm:leading-none"
               >
-                Schuler
+                EduConnect
               </p>
             </div>
             <p className="text-gray-300 text-base md:text-lg">

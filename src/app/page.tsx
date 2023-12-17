@@ -10,9 +10,7 @@ import Dashboard from './admin/dashboard/page'
 
 export default function Home() {
   const { data: session } = useSession();
-  console.log("session on admin dashboard navbar ");
-  console.log(session);
-  console.log("end session on admin dashboard navbar ");
+  
   
   
   return (

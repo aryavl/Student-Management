@@ -1,0 +1,40 @@
+"use client" 
+import SideNavbar from '@/components/admin/SideNavbar';
+import TeacherList from '@/components/admin/TeacherList';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import React from 'react'
+
+const StaffList = () => {
+  const router = useRouter()
+  const { data: session } = useSession();
+  console.log("session on admin  navbar ");
+  console.log(session?.user);
+  console.log("end session on admin  navbar ");
+
+
+  return (
+    <>
+      {session ? (
+        session?.user?.type === 'admin' ? (
+          <div>
+            <div className="flex-col flex">
+              <div className="bg-gray-800 text-gray-200 flex overflow-x-hidden">
+                <SideNavbar />
+                <div className="mx-auto flex-col container flex max-w-7xl">
+                  <TeacherList/>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )
+      ) : (
+        ""
+      )}
+    </>
+  );
+}
+
+export default StaffList

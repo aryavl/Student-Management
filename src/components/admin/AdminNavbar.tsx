@@ -8,17 +8,15 @@ import Image from 'next/image';
 
 const AdminNavbar = () => {
   const { data: session } = useSession();
-  console.log("session on admin  navbar ");
-  console.log(session?.user);
-  console.log("end session on admin  navbar ");
+  
   return (
     <div className="w-full bg-gray-900 text-gray-200 border-b border-gray-800">
       <div className="mx-auto h-16 items-center justify-between px-4 flex">
         <div>
         <Link href="/admin/dashboard">
             <h1 className="text-xl text-white md:text-4xl">
-              <span className="font-extrabold font-antialiased">SCHU</span>
-              <span className="font-serif antialiased text-gray-400">LER</span>
+              <span className="font-extrabold font-antialiased">Edu</span>
+              <span className="font-serif antialiased text-gray-400">Connect</span>
             </h1>
           </Link>
         </div>
@@ -35,7 +33,7 @@ const AdminNavbar = () => {
               </span>
             </span>
           </p>
-          <input type="search" placeholder="Type to search" className="border border border-gray-700 focus:border-indigo-600
+          <input type="search" placeholder="Type to search" className="border  border-gray-700 focus:border-indigo-600
               focus:ring-indigo-600 w-full rounded-lg bg-gray-800 px-3 py-2 pb-2 pl-10 pt-2 text-gray-300 sm:text-sm"></input>
         </div>
         <div className="ml-auto items-center justify-end md:space-x-6 flex space-x-3">

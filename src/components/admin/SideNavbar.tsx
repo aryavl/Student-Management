@@ -16,7 +16,7 @@ const SideNavbar = () => {
           <div className="h-full flex-col flex">
             <div className="px-4 space-y-4">
               <nav className="space-y-1 bg-cover bg-top">
-                <Link href="editor#" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
+                <Link href="/admin/dashboard" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
                     block flex cursor-pointer transition-all duration-200 hover:bg-gray-800">
                   <span className="items-center justify-center flex">
                     <span className="items-center justify-center flex">
@@ -31,7 +31,7 @@ const SideNavbar = () => {
                   <></>
                   <span>Dashboard</span>
                 </Link>
-                <a href="editor#" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
+                <Link href="/admin/statics" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
                     block flex cursor-pointer transition-all duration-200 hover:bg-gray-800">
                   <span className="items-center justify-center flex">
                     <span className="items-center justify-center flex">
@@ -45,13 +45,13 @@ const SideNavbar = () => {
                     </span>
                   </span>
                   <span>Statics</span>
-                </a>
+                </Link>
               
               </nav>
               <div>
                 <p className="px-4 text-xs font-semibold tracking-widest text-gray-400 uppercase">Class</p>
                 <nav className="mt-4 space-y-1 bg-cover bg-top">
-                  <a href="editor#" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
+                  <Link href="/admin/streams" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
                       block flex cursor-pointer transition-all duration-200 hover:bg-gray-800">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
@@ -65,7 +65,7 @@ const SideNavbar = () => {
                       </span>
                     </span>
                     <span>Streams</span>
-                  </a>
+                  </Link>
                   {/* <a href="editor#" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
                       block flex cursor-pointer transition-all duration-200 hover:bg-gray-800">
                     <span className="items-center justify-center flex">
@@ -85,7 +85,7 @@ const SideNavbar = () => {
                     </span>
                     <span>Alerts</span>
                   </a> */}
-                  <a href="editor#" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
+                  <Link href="/admin/timetable" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
                       block flex cursor-pointer transition-all duration-200 hover:bg-gray-800">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
@@ -101,13 +101,13 @@ const SideNavbar = () => {
                     <span>Timetable</span>
                     {/* <span className="ml-auto items-center rounded-full bg-indigo-50 px-2 py-0.5 text-xs font-semibold
                         text-indigo-600 inline-flex border border-indigo-300 uppercase">New</span> */}
-                  </a>
+                  </Link>
                 </nav>
               </div>
               <div>
                 <p className="px-4 text-xs font-semibold tracking-widest text-gray-400 uppercase">Teachers</p>
                 <nav className="mt-4 space-y-1 bg-cover bg-top">
-                  <a href="editor#" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
+                  <a href="/admin/staff" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
                       block flex cursor-pointer transition-all duration-200 hover:bg-gray-800">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
@@ -121,7 +121,7 @@ const SideNavbar = () => {
                         </span>
                       </span>
                     </span>
-                    <span>Teacher</span>
+                    <span>Teachers</span>
                     {/* <span className="ml-auto items-center rounded-full bg-gray-500 px-2 py-0.5 text-xs font-semibold
                         text-white inline-flex border border-transparent uppercase">15</span> */}
                   </a>
@@ -141,7 +141,7 @@ const SideNavbar = () => {
                     </span>
                     <span>Agents</span>
                   </a> */}
-                  <a href="editor#" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
+                  <Link href="/admin/requests" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 group
                       block flex cursor-pointer transition-all duration-200 hover:bg-gray-800">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
@@ -157,7 +157,7 @@ const SideNavbar = () => {
                     <span>Requests</span>
                                         <span className="ml-auto items-center rounded-full bg-gray-500 px-2 py-0.5 text-xs font-semibold
                         text-white inline-flex border border-transparent uppercase">15</span>
-                  </a>
+                  </Link>
                 </nav>
               </div>
             </div>

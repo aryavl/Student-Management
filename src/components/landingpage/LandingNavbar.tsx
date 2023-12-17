@@ -19,8 +19,8 @@ const LandingNavbar = () => {
         <div className="flex flex-row justify-between items-center mt-2 mb-2 md:m-0 md:flex">
           <Link href="/">
             <h1 className="text-xl text-white md:text-4xl">
-              <span className="font-extrabold font-antialiased">SCHU</span>
-              <span className="font-serif antialiased secondHalfHeading">LER</span>
+              <span className="font-extrabold font-antialiased">Edu</span>
+              <span className="font-serif antialiased secondHalfHeading">Connect</span>
             </h1>
           </Link>
         </div>

@@ -68,11 +68,20 @@ body {
   font-size: x-large;
 }
 .glassBox{
-  background-color: var(--hero-bg) ;/* Adjust the opacity as needed */
-  backdrop-filter: blur(10px); /* Adjust the blur as needed */
-  border-radius: 10px; /* Adjust the border-radius as needed */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Add a border for better visibility */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  background-color: var(--hero-bg) ;
+  backdrop-filter: blur(10px); 
+  border-radius: 10px; 
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  color: #fff;
+  padding: 20px;
+}
+.glassBoxStream{
+  background-color: #191e27;
+  backdrop-filter: blur(10px); 
+  border-radius: 10px;
+  /* border: 1px solid rgba(255, 255, 255, 0.1);  */
+  box-shadow: 0 4px 6px rgba(193, 184, 218, 0.1); 
   color: #fff;
   padding: 20px;
 }

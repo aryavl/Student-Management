@@ -7,15 +7,13 @@ import Navbar from "@/components/Navbar";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Head from 'next/head';
+import { isValidEmail, isValidPassword } from "@/components/helpers/ValidationReg";
 
 
 const Register = () => {
   const [error,setError] = useState("")
   const router = useRouter()
-  const isValidEmail = (email: string) => {
-    const emailRegex = /^[\w.%+-]+@[\w.-]+\.[A-Za-z]{2,}$/i;
-    return emailRegex.test(email);
-  };
+  
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -32,29 +30,13 @@ const Register = () => {
       return;
 
     }
-    if(!password || password.length <8){
-      setError("Password is Invalid")
-      return
-    }
 
-    if(password !== confirmPassword){
-      setError("Password Mismatch")
-      return
-    }
-    const data = {
-      firstname,
-      lastname,
-      email,
-      phone,
-      password,
-    };
-    
+    const passVal = isValidPassword(password,confirmPassword)
+    console.log(passVal);
+    setError(passVal)
+
     try {
-    //  axios.post('/api/register', JSON.stringify(data), {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   });
+    
       const res= await fetch('/api/register',{
         method:'POST',
         headers:{
@@ -73,10 +55,10 @@ const Register = () => {
       }
       if(res.status === 200){
         setError("")
-        router.push('/login')
+        router.push('/admin/login')
       }
     } catch (error:any) {
-      console.error("register ui error",error.message);
+      console.error("Register user error",error.message);
       setError("Error, try again")
     }
   };
@@ -112,7 +94,7 @@ const Register = () => {
 
                 <form onSubmit={handleSubmit}>
                   <div className="w-full mt-3 mr-auto mb-3 ml-auto  py-1">
-                    <p className="text-red-600 text=[16px] mb-4">{error && error}</p>
+                  
                     <label className="block text-sm font-medium text-gray-700">
                       First Name
                     </label>
@@ -190,7 +172,7 @@ const Register = () => {
                       />
                     </div>
                   </div>
-
+                  <p className="text-red-600 text=[16px] mb-4">{error && error}</p>
                   <button
                     type="submit"
                     className="hover:bg-gray-600 rounded-md text-xl pt-3 pr-3 pb-3 pl-3 bg-gray-800
