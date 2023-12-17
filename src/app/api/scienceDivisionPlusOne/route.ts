@@ -34,8 +34,13 @@ export const GET = async(request:NextApiRequest)=>{
             { status: 200, statusText: "OK" }
         );
 
-    } catch (error) {
-        
-    }
-
+    } catch (error:any) {
+        return NextResponse.json(
+            { message: "error" },
+            {
+              status: 500,
+              statusText: error.message,
+            }
+          );
+        }
 }

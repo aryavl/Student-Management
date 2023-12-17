@@ -53,10 +53,13 @@ export const GET = async (request: NextApiRequest) => {
       { status: 200, statusText: "Divisions fetched successfully" }
     );
   } catch (error: any) {
-    return new NextResponse(error, {
-      status: 500,
-      statusText: error.message,
-    });
+    return NextResponse.json(
+      { message: "error" },
+      {
+        status: 500,
+        statusText: error.message,
+      }
+    );
   }
 };
 

@@ -8,7 +8,7 @@ import Divisions from '@/models/Divisions'
 
   
 
-const ScienceBatchContent = ({articles}:any) => {
+const ScienceBatchContent = () => {
    
     const { data, error } = useSWR('http://localhost:3000/api/scienceDivisionPlusOne', async (url) => {
       const response = await fetch(url);

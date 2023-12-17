@@ -9,9 +9,7 @@ import React from 'react'
 const StaffList = () => {
   const router = useRouter()
   const { data: session } = useSession();
-  console.log("session on admin  navbar ");
-  console.log(session?.user);
-  console.log("end session on admin  navbar ");
+
 
 
   return (
