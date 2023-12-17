@@ -1,4 +1,5 @@
 "use client"
+import GoToLogin from '@/components/admin/GoToLogin';
 import ScienceBatchContent from '@/components/admin/ScienceBatch';
 import SideNavbar from '@/components/admin/SideNavbar';
 import { useSession } from 'next-auth/react';
@@ -27,7 +28,7 @@ const ScienceBatch = () => {
             ""
           )
         ) : (
-          ""
+          <GoToLogin/>
         )}
       </>
     );

@@ -1,4 +1,5 @@
 "use client" 
+import GoToLogin from '@/components/admin/GoToLogin';
 import SideNavbar from '@/components/admin/SideNavbar';
 import TeacherList from '@/components/admin/TeacherList';
 import { useSession } from 'next-auth/react';
@@ -31,7 +32,7 @@ const StaffList = () => {
           ""
         )
       ) : (
-        ""
+        <GoToLogin/>
       )}
     </>
   );

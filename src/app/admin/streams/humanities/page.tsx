@@ -1,4 +1,5 @@
 "use client"
+import GoToLogin from '@/components/admin/GoToLogin';
 import SideNavbar from '@/components/admin/SideNavbar';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -26,7 +27,7 @@ const HumanitiesDept = () => {
             ""
           )
         ) : (
-          ""
+          <GoToLogin/>
         )}
       </>
     );
