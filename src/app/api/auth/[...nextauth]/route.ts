@@ -73,7 +73,7 @@ export const authOptions = {
                 console.log("google login");
                 
                 return signInWithOAuth({ account, profile }).then(() => {
-                  return { url: '/admin/dashboard' }; // Customize this URL to your desired landing page
+                  return { url: '/dashboard' };
                 });
             }
 

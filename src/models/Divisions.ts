@@ -1,12 +1,13 @@
 
 import mongoose, { Schema } from "mongoose";
 
-const divisionSchema = new Schema({
+const divisionSchemas = new Schema({
     className :{
         type:String
     },
     stream:{
-        type:String
+        type: mongoose.Schema.Types.ObjectId,
+       
     },
     division:{
         type:String
@@ -19,6 +20,10 @@ const divisionSchema = new Schema({
         type:String
     }    
     ],
+    classTeacher:{
+        type: mongoose.Schema.Types.ObjectId,
+        
+    }
 },{timestamps:true})
 
-export default mongoose.models.DivisionList || mongoose.model("DivisionList",divisionSchema)
+export default mongoose.models.Divisions || mongoose.model("Divisions",divisionSchemas)

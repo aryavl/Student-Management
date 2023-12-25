@@ -7,6 +7,7 @@ import Testimonials from '@/components/landingpage/Testimonials'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import Dashboard from './admin/dashboard/page'
+import LandingNavbar from '@/components/landingpage/LandingNavbar'
 
 export default function Home() {
   const { data: session } = useSession();
@@ -20,7 +21,7 @@ export default function Home() {
       <Dashboard/>
     ):(
       <main className=" ">
-    
+   
       <HeroSection/>
       <Pricing/>
       <Testimonials/>

@@ -1,27 +1,13 @@
-"use client";
+"use client"
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import useSWR from "swr";
 
-const AddDivisionModal: React.FC<SingleStreamContentProps> = ({ id }) => {
+const AddCommerceDiv = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [errorr, setError] = useState("");
-  const [teachers, setTeachers] = useState([]);
+const [error,setError] = useState("")
+const router = useRouter()
 
-  const router = useRouter();
 
-  const { data, error } = useSWR(
-    "http://localhost:3000/api/admin/divisiondata",
-    async (url) => {
-      const response = await fetch(url);
-      const result = await response.json();
-      return result;
-    }
-  );
-
-  console.log(data);
-  
-  const streams = data?.stream;
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -29,45 +15,38 @@ const AddDivisionModal: React.FC<SingleStreamContentProps> = ({ id }) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  const handleStreamChange = async (id: string) => {
-    console.log(id);
-    const res = await fetch(`/api/admin/divisionregister?id=${id}`);
-    const result = await res.json();
-    console.log(result);
 
-    setTeachers(result?.teacher);
-  };
-  const handleSubmit = async (e: HandleSubmitType) => {
+  const handleSubmit = async(e: HandleSubmitType) => {
     e.preventDefault();
     // console.log(e.target[0].value,e.target[1].value,e.target[2].value);
-    const className = e.target[0].value;
-    const stream = e.target[1].value;
-    const division = e.target[2].value;
-    const classTeacher = e.target[3].value;
-    console.log(className, stream, division, classTeacher);
+    const className = e.target[0].value
+    const stream = e.target[1].value
+    const division = e.target[2].value
+    
+    const res= await fetch('/api/division',{
+        method:'POST',
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          className,
+          stream,
+          division
+        })
+      })
+console.log(res);
 
-    const res = await fetch("/api/division", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        className,
-        stream,
-        division,
-        classTeacher,
-      }),
-    });
-    console.log(res);
+      if(res.status === 400){
+        setError(res.statusText)
 
-    if (res.status === 400) {
-      setError(res.statusText);
-    }
-    if (res.status === 200) {
-      setError("");
-      router.push(`/admin/streams/${id}`);
-      closeModal();
-    }
+      }
+      if(res.status === 200){
+        setError("")
+        router.push('/admin/streams/commerce')
+        closeModal();
+      }
+
+    
   };
 
   return (
@@ -127,17 +106,10 @@ const AddDivisionModal: React.FC<SingleStreamContentProps> = ({ id }) => {
                 >
                   Stream:
                 </label>
-                <select
-                  className="border w-full py-2 px-3 text-gray-700"
-                  onChange={(e) => {
-                    handleStreamChange(e.target.value);
-                  }}
-                >
-                  {streams.map((item: MapStream) => (
-                    <option value={item._id} key={item._id}>
-                      {item.streamName}
-                    </option>
-                  ))}
+                <select className="border w-full py-2 px-3 text-gray-700">
+                  <option value="science">Science</option>
+                  <option value="commerce">Commerce</option>
+                  <option value="humanities">Humanities</option>
                 </select>
               </div>
               <div className="mb-4">
@@ -154,25 +126,9 @@ const AddDivisionModal: React.FC<SingleStreamContentProps> = ({ id }) => {
                   className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="username"
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
-                  Class Teacher:
-                </label>
-                <select className="border w-full py-2 px-3 text-gray-700">
-                  {teachers&& teachers.map((item: Teacher) => (
-                    <option value={item._id} key={item._id}>
-                      {item.teacherName}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <p className="text-red-600 text=[16px] mb-4">
-                {errorr && errorr}
-              </p>
+
               <div className="flex items-center justify-between">
+              <p className="text-red-600 text=[16px] mb-4">{error && error}</p>
                 <button
                   onClick={closeModal}
                   type="button"
@@ -195,4 +151,4 @@ const AddDivisionModal: React.FC<SingleStreamContentProps> = ({ id }) => {
   );
 };
 
-export default AddDivisionModal;
+export default AddCommerceDiv;

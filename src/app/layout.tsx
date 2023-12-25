@@ -10,6 +10,8 @@ import Provider from "@/context/Provider";
 import ReduxProvider from "@/redux/ReduxProvider";
 const inter = Inter({ subsets: ["latin"] });
 
+
+
 export const metadata: Metadata = {
   title: "Edu Connect",
   description: "Student management",

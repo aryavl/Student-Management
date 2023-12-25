@@ -7,9 +7,7 @@ import Link from 'next/link';
 
 const SideNavbar = () => {
   const { data: session } = useSession();
-  console.log("session on admin side navbar ");
-  console.log(session?.user);
-  console.log("end session on admin side navbar ");
+  
   return (
     <div className="bg-gray-900 text-gray-200 md:w-64 md:flex-col lg:flex hidden border-r border-gray-800">
         <div className="h-full flex-col pt-5 flex overflow-y-auto">

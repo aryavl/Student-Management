@@ -1,11 +1,26 @@
-"use client"
+"use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useSWR, { mutate } from "swr";
 
 const ModalFormForAddTeacher = () => {
+  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-const [error,setError] = useState("")
-const router = useRouter()
+  const [errorr, setError] = useState("");
+  const [subjectList,setSubjectList] = useState([])
+  const { data, error } = useSWR(
+    `/api/admin/stream/streamlist`,
+    async (url) => {
+      const response = await fetch(url);
+      const result = await response.json();
+      return result;
+    }
+  );
+
+  const stream = data?.stream;
+
+  // console.log(stream);
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -13,40 +28,49 @@ const router = useRouter()
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
-  const handleSubmit = async(e: HandleSubmitType) => {
+  const handleStreamChange = async (id: string) => {
+    console.log(id);
+    const res = await fetch(`/api/admin/teacher/registerdata?id=${id}`);
+    const result = await res.json();
+    console.log(result);
+   
+    setSubjectList(result?.subject)
+  };
+  const handleSubmit = async (e: HandleSubmitType) => {
     e.preventDefault();
-    // console.log(e.target[0].value,e.target[1].value,e.target[2].value);
-    const teacherName = e.target[0].value
-    const email = e.target[1].value
-    const stream = e.target[2].value
-    const subject = e.target[3].value
-    
-    const res= await fetch('/api/teacherRegistration',{
-        method:'POST',
-        headers:{
-          "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-          teacherName,
-          email,
-          stream,
-          subject
-        })
-      })
-console.log(res);
+    console.log(e.target[0].value, e.target[1].value, e.target[2].value);
+    const teacherName = e.target[0].value;
+    const email = e.target[1].value;
+    const stream = e.target[2].value;
+    const subject = e.target[3].value;
 
-      if(res.status === 400){
-        setError(res.statusText)
+    console.log(teacherName, email, stream, subject);
 
-      }
-      if(res.status === 200){
-        setError("")
-        router.push('/admin/teachers')
-        closeModal();
-      }
+    const res = await fetch("/api/admin/teacher/registerdata", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        teacherName,
+        email,
+        stream,
+        subject,
+      }),
+    });
+    console.log(res);
 
-    
+    if (res.status === 400) {
+      setError(res.statusText);
+    }
+    if (res.status === 200) {
+      setError("");
+
+      // mutate("/admin/staff");
+      router.push("/admin/staff")
+
+      closeModal();
+    }
   };
 
   return (
@@ -93,30 +117,52 @@ console.log(res);
                 >
                   Teacher Name:
                 </label>
-               
-                  <input  className="border w-full py-2 px-3 text-gray-700" placeholder="Jhon Sam" type="text" name="name" id="" />
+
+                <input
+                  className="border w-full py-2 px-3 text-gray-700"
+                  placeholder="Jhon Sam"
+                  type="text"
+                  name="name"
+                  id=""
+                />
               </div>
               <div className="mb-4 flex flex-col sm:flex-row justify-between items-center">
                 <label
                   htmlFor="username"
                   className="block text-gray-700 text-sm font-bold text-left  w-1/2"
                 >
-                 Email:
+                  Email:
                 </label>
-               
-                  <input  className="border w-full py-2 px-3 text-gray-700" placeholder='jhon@gmail.com'  type="text" name="email" id="" />
+
+                <input
+                  className="border w-full py-2 px-3 text-gray-700"
+                  placeholder="jhon@gmail.com"
+                  type="text"
+                  name="email"
+                  id=""
+                />
               </div>
-              
+
               <div className="mb-4 flex flex-col sm:flex-row justify-between items-center">
                 <label
                   htmlFor="username"
                   className="block text-gray-700 text-sm font-bold text-left  w-1/2"
                 >
-                 Stream:
+                  Stream:
                 </label>
-               
-                <select className="border w-full py-2 px-3 text-gray-700">
-                  <option value="science">Science</option>
+
+                <select
+                  className="border w-full py-2 px-3 text-gray-700"
+                  onChange={(e) => {
+                    handleStreamChange(e.target.value);
+                  }}
+                >
+                  {stream &&
+                    stream.map((item: MapStream) => (
+                      <option value={item._id} key={item._id}>
+                        {item.streamName}
+                      </option>
+                    ))}
                   <option value="commerce">Commerce</option>
                   <option value="humanities">Humanities</option>
                 </select>
@@ -126,24 +172,21 @@ console.log(res);
                   htmlFor="username"
                   className="block text-gray-700 text-sm font-bold text-left  w-1/2"
                 >
-                 Subject:
+                  Subject:
                 </label>
-               
+
                 <select className="border w-full py-2 px-3 text-gray-700">
-                  <option value="malayalam">Malayalam</option>
-                  <option value="english">English</option>
-                  <option value="hindi">Hindi</option>
-                  <option value="physics">Physics</option>
-                  <option value="chemistry">Chemistry</option>
-                  <option value="maths">Maths</option>
-                  <option value="computer science">Computer Science</option>
-                  <option value="biology">Biology</option>
+                  {subjectList &&
+                    subjectList?.map((item: SubjectMap) => (
+                      <option value={item._id} key={item._id}>
+                        {item.subjectName}
+                      </option>
+                    ))}
+                
                 </select>
               </div>
-              
-             
 
-              <p className="text-red-600 text=[16px] mb-4">{error && error}</p>
+              <p className="text-red-600 text=[16px] mb-4">{errorr && errorr}</p>
               <div className="flex items-center justify-between mt-10">
                 <button
                   onClick={closeModal}

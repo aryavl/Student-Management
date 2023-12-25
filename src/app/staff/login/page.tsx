@@ -28,7 +28,7 @@ const StaffLogin = () => {
     if(!session){
       try {
     
-        const res= await fetch('/api/teacherLogin',{
+        const res= await fetch('/api/teacher/login',{
           method:'POST',
           headers:{
             "Content-Type":"application/json"
@@ -37,12 +37,20 @@ const StaffLogin = () => {
             email
           })
         })
+        const data = await res.json()
         if(res.status === 404){
           setError("Email is Invalid")
         }
         if(res.status === 200){
           setError("")
-          router.push('/staff/login/otp')
+          if(data?.verifiedTeacher){
+            router.push('/staff/login/password')
+
+          }
+          if(data?.updatedTeacher){
+
+            router.push('/staff/login/otp')
+          }
         }
       } catch (error:any) {
         console.error("Register user error",error.message);

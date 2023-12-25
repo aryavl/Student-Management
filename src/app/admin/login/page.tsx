@@ -44,7 +44,7 @@ const Login = () => {
         router.replace('/admin/dashboard');
       }if(!session){
         // console.log("No SESSION");
-        router.replace('/admin/login')
+        router.replace('/')
       }
     }  
   }

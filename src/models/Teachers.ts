@@ -9,10 +9,10 @@ email:{
     unique:true
 },
 stream:{
-    type:String
+    type:  mongoose.Schema.Types.ObjectId 
 },
 subject:{
-    type:String
+    type:  mongoose.Schema.Types.ObjectId 
 },
 type:{
     type:String
@@ -20,7 +20,14 @@ type:{
 isVerified:{
     type:Boolean,
     default:false
+},
+otp:{
+    type:Number,
+},
+isClassTeacher:{
+    type:Boolean,
+    default:false
 }
 },{timestamps:true})
 
-export default mongoose.models.Teachers || mongoose.model("Teachers",teacherSchema)
+export default mongoose.models.Teacher || mongoose.model("Teacher",teacherSchema)

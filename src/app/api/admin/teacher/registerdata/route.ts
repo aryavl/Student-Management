@@ -1,6 +1,7 @@
 import Admin from '@/models/Admin'
 import EmailActive from '@/models/EmailActive'
-import Teacher from '@/models/Teacher'
+import Subjects from '@/models/Subjects'
+import Teacher from '@/models/Teachers'
 import connect from '@/utils/db'
 import bcrypt from 'bcryptjs'
 import { NextApiRequest } from 'next'
@@ -11,7 +12,11 @@ export const POST = async(request : NextApiRequest)=>{
 try {
     
     const { teacherName, email, stream, subject } = await request.json();
+   console.log(teacherName,email,stream,subject);
+   
+    
     await connect()
+// console.log(teacherName,email,stream);
 
     const existing = await Teacher.findOne({email})
     if(existing){
@@ -24,7 +29,8 @@ try {
             email: email,
             stream:stream,
             subject:subject,
-            type:"teacher"
+            type:"teacher",
+            // isClassTeacher:false
         })
 
         await newTeacher.save()
@@ -44,21 +50,28 @@ try {
 
 }
 
-export const GET = async (request: NextApiRequest) => {
+
+export const GET = async(req:NextApiRequest)=>{
     try {
-      await connect();
-      const teachers = await Teacher.find();
-      return NextResponse.json(
-        { teachers },
-        { status: 200, statusText: "Teachers fetched successfully" }
-      );
-    } catch (error: any) {
-      return NextResponse.json(
-        { message: "error" },
-        {
-          status: 500,
-          statusText: error.message,
+        // console.log("get");
+        
+        const url = new URL(req.url!)
+        const searchParams = url.searchParams
+        console.log(searchParams.get('id'));
+        const id=searchParams.get('id') 
+        const subject = await Subjects.find({stream:id,isList:false})
+        return NextResponse.json(
+            { subject },
+            { status: 200, statusText: "Teachers fetched successfully" }
+          );
+    } catch (error:any) {
+        return NextResponse.json(
+            { message: "error" },
+            {
+              status: 500,
+              statusText: error.message,
+            }
+          );
         }
-      );
-    }
-  };
+}
+

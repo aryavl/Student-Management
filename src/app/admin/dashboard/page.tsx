@@ -15,11 +15,8 @@ import { useSession } from "next-auth/react";
 // }
 const Dashboard = () => {
   const router = useRouter()
-  const { data: session } = useSession();
-  console.log("session on admin  navbar ");
-  console.log(session?.user);
-  console.log("end session on admin  navbar ");
-
+  const { data: session ,status} = useSession();
+  
   useLayoutEffect(() => {
 
     if (session) {
@@ -32,24 +29,47 @@ const Dashboard = () => {
  
   return (
     <>
-      {session ? (
-        session?.user?.type === 'admin' ? (
-          <div>
-            <div className="flex-col flex">
-              <div className="bg-gray-800 text-gray-200 flex overflow-x-hidden">
-                <SideNavbar />
-                <div className="mx-auto flex-col container flex max-w-7xl">
-                  <Content />
-                </div>
-              </div>
-            </div>
+    {status === 'loading' && (
+ <>
+ <div className="flex-col flex">
+   <div className="bg-gray-800 text-gray-200 flex overflow-x-hidden">
+     <SideNavbar />
+     <div className="mx-auto flex-col container flex justify-center items-center max-w-7xl">
+       <h1>Loading ...</h1>
+     </div>
+   </div>
+ </div>
+</>
+    )}
+
+    {/* {status === "unauthenticated" && (
+      router.replace('/admin/login')
+    )} */}
+
+
+    {status === 'authenticated' && (
+session ? (
+  session?.user?.type === 'admin' ? (
+    <>
+      <div className="flex-col flex">
+        <div className="bg-gray-800 text-gray-200 flex overflow-x-hidden">
+          <SideNavbar />
+          <div className="mx-auto flex-col container flex max-w-7xl">
+            <Content />
           </div>
-        ) : (
-          ""
-        )
-      ) : (
-        ""
-      )}
+        </div>
+      </div>
+    </>
+  ) : (
+    ""
+  )
+) : (
+  <>
+  
+  </>
+)
+    )}
+      
     </>
   );
   

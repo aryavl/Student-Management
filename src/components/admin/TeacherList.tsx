@@ -1,13 +1,24 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import ModalFormForAddTeacher from './ModalFormForAddTeacher'
 import useSWR from 'swr';
 
+
 const TeacherList = () => {
-  const { data, error } = useSWR('http://localhost:3000/api/teacherRegistration', async (url) => {
-      const response = await fetch(url);
-      const result = await response.json();
-      return result;
-    });
+  const [page, setPage] = useState(1)
+  
+  const { data, error } = useSWR(`http://localhost:3000/api/admin/teacher/pagination?page=${page}`, async (url) => {
+    const response = await fetch(url);
+
+    console.log(response.status);
+    
+    const result = await response.json();
+
+    return result;
+  });
+  
+  
+
   const teachers = data?.teachers
   console.log(data); 
   
@@ -46,7 +57,7 @@ const TeacherList = () => {
   </div>
   <div className="grid mt-0 mr-auto mb-0 ml-auto gap-10 row-gap-8 sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2
       lg:grid-cols-3">
-        {teachers.map(item=>(
+        {teachers?.map((item: MapItem)=>(
           <div className="flex" key={item._id}>
             {item.image?       <img src="https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" className="shadow object-cover mt-0 mr-4 mb-0 ml-0 rounded-full w-20 h-20"/> : (
               <h1 className='shadow object-cover mt-0 mr-4 mb-0 ml-0 rounded-full w-20 h-20 bg-slate-900 flex items-center justify-center capitalize'>{item.teacherName}</h1>
@@ -54,14 +65,31 @@ const TeacherList = () => {
 
       <div className="flex justify-center flex-col">
         <p className="text-lg font-bold capitalize mb-2">Name: {item.teacherName}</p>
-        <p className="text-sm capitalize mt-0 mr-0  ml-0 mb-1">Subject: {item.subject}</p>
-        <p className="text-sm capitalize mt-0 mr-0 mb-4 ml-0">Stream: {item.stream}</p>
+        <p className="text-sm capitalize mt-0 mr-0  ml-0 mb-1">Subject: {item.subjectdata.subjectName}</p>
+        <p className="text-sm capitalize mt-0 mr-0 mb-4 ml-0">Stream: {item.streamdata.streamName}</p>
       </div>
     </div>
         ))}
     
     
   </div>
+  <div className="flex justify-center gap-4 mt-4">
+          <button
+            className="border bg-gray-950 hover:bg-gray-900 py-2 px-5 rounded-l "
+            onClick={() => setPage((prevPage) => Math.max(prevPage - 1, 1))}
+            disabled={page === 1}
+          >
+            Previous
+          </button>
+          <button className='"border bg-gray-950 py-2 px-4  rounded-l cursor-default' >{page}</button>
+          <button
+            className="border bg-gray-950 hover:bg-gray-900 py-2 px-8 rounded-l"
+            disabled={teachers.length}
+            onClick={() => setPage((prevPage) => prevPage + 1)}
+          >
+            Next
+          </button>
+        </div>
 </div>
     </>
   )

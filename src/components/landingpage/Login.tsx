@@ -3,12 +3,12 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faChalkboardTeacher,
   faUser,
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import LandingNavbar from "./LandingNavbar";
 
 const Login = () => {
   const router = useRouter();
@@ -23,6 +23,7 @@ const Login = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center  sm:px-20 md:px-28 py-5 pb-20 m-auto">
+    
         <h1 className="text-center font-bold md:pt-12 md:pb-6">LOGIN</h1>
         <div className="flex justify-center items-center sm:px-20 md:px-28 py-5 gap-5 flex-col md:flex-row m-auto">
           {/* <Link href="/admin/login">
