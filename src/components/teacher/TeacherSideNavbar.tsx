@@ -89,7 +89,7 @@ const TeacherSideNavbar = () => {
                     <span>Take Attendence</span>
                    
                   </Link>
-                  <Link href="/admin/staff" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 font-bold group
+                  <Link href="/staff/class-attendence" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 font-bold group
                       block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-white">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
