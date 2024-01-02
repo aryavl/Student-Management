@@ -4,15 +4,17 @@ export const isValidEmail = (email: string) => {
   };
 
   export const isValidPassword = (pass1:string, pass2:string)=>{
+    console.log(pass1,pass2);
+    
     const uppercaseRegex = /[A-Z]/;
   const lowercaseRegex = /[a-z]/;
   const digitRegex = /\d/;
   const specialCharacterRegex = /[!@#$%^&*()-=_+{}[\]:;'",.<>?/\\|`~]/;
     if(!pass1 || pass1.length <8){
-        return "Password is Invalid"
+        return "Password is Invalid. Try Again!"
     }
     if(pass1 !== pass2){
-        return "Password Mismatch"
+        return "Password Mismatch. Try Again!"
     }
     if(!uppercaseRegex.test(pass1)){
             return "Password must contain at least one upper case letter"

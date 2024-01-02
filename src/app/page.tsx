@@ -6,8 +6,9 @@ import Pricing from '@/components/landingpage/Pricing'
 import Testimonials from '@/components/landingpage/Testimonials'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
-import Dashboard from './admin/dashboard/page'
+
 import LandingNavbar from '@/components/landingpage/LandingNavbar'
+import Dashboard from './(admin side)/admin/dashboard/page'
 
 export default function Home() {
   const { data: session } = useSession();

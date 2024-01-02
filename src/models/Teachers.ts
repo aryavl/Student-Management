@@ -27,7 +27,10 @@ otp:{
 isClassTeacher:{
     type:Boolean,
     default:false
-}
+},
+password:{
+    type:String
+},
 },{timestamps:true})
 
-export default mongoose.models.Teacher || mongoose.model("Teacher",teacherSchema)
+export default mongoose.models.TeachersList || mongoose.model("TeachersList",teacherSchema)
