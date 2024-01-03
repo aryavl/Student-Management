@@ -2,11 +2,11 @@ import { timeStamp } from "console";
 import mongoose, { Schema } from "mongoose";
 
 const attendenceSchema = new Schema({
-  studentName:{
+  studentId:{
     type:mongoose.Schema.Types.ObjectId
   },
   date:{
-    type: Date
+    type: String
   },
   isPresent:{
     type:Boolean,
@@ -15,5 +15,5 @@ const attendenceSchema = new Schema({
 },{timestamps:true}
 )
 
-export default mongoose.models.Attendence || mongoose.model('Attendence',attendenceSchema)
+export default mongoose.models.Attendencelist || mongoose.model('Attendencelist',attendenceSchema)
 

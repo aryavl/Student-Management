@@ -166,7 +166,7 @@ interface SubjectMap {
 }
 
 interface StudentMap{
-  _id:string,
+  _id:string  ,
   studentName:string,
   email:string, 
   phone:number,
