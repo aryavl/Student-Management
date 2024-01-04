@@ -79,7 +79,7 @@ const AddStudent: React.FC<SingleStreamContentProps> = ({ id ,setIsStudentAdded}
     <>
       <button
         onClick={openModal}
-        className="text-white bg-green-800 font-bold rounded-md pl-3 pr-3 text-lg flex justify-center items-center overflow-hidden relative focus:outline-none group transition duration-300 delay-150 hover:delay-300 "
+        className="text-emerald-100 bg-green-800 font-bold rounded-md pl-3 pr-3 text-lg flex justify-center items-center overflow-hidden relative focus:outline-none group transition duration-300 delay-150 hover:delay-300 "
       >
         <span className="transition-transform px-4 py-1 transform scale-75 group-hover:scale-0 inline-block opacity-100 group-hover:hidden font-bold text-lg  duration-300 delay-150 hover:delay-300">
           +

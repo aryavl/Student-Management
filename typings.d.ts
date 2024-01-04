@@ -207,3 +207,64 @@ interface StudentMap{
     isClassTeacher: boolean;
   }
 }
+
+interface GetAttendenceDAtaProp{
+  divId:string,
+  streamId:string
+}
+interface DivisionProps{
+  _id: string;
+  className: string;
+  stream: string;
+  division: string;
+  isList: boolean;
+  students: string[];
+  classTeacher: string;
+}
+interface TeacherProps{
+  _id: string;
+  teacherName: string;
+  email: string;
+  stream: string;
+  subject: string;
+  type: string;
+  isVerified: boolean;
+  otp: number;
+  isClassTeacher: boolean;
+}
+interface SubjectProps{
+ 
+    _id: string;
+    stream: string;
+    subjectName: string;
+    isList: boolean;
+  
+}
+interface StudentProps{
+  _id:string  ,
+  studentName:string,
+  email:string, 
+  phone:number,
+  father:string,
+  mother:string,
+  guardiam:string,
+  dateOfJoing:Date,
+  stream:string,
+  division:string,
+  type:string,
+  image:string,
+  isVerified:boolean,
+  otp:number,
+  password:string,
+  admissionNumber:number,
+}
+interface AttendenceProps{
+  studentId:string,
+  date:string,
+  streamId:string,
+  divisionId:string,
+  isPresent:boolean
+}
+interface AttendenceMap{
+  [key:string]:AttendenceProps
+}

@@ -16,6 +16,8 @@ const TakeAttendence = () => {
     [key: string]: boolean;
   }>({});
   const id = session?.user?._id;
+  const streamId = session?.user?.stream
+  console.log(streamId);
 
   useEffect(() => {
     const currentDate = new Date();
@@ -61,12 +63,15 @@ const TakeAttendence = () => {
       rowElement.style.backgroundColor = isPresent ? "#025409" : "#850310";
       rowElement.style.color = "#FFFFFF";
     }
-    setIsAnyRadioButtonChecked(true)
+    // setIsAnyRadioButtonChecked(!isAnyRadioButtonChecked)
   };
-  const isAnyRadioButtonUnchecked = ():boolean =>{
-    return Object.values(attendanceStatus).some((value) => value !== true);
+ const handleSaveAttendence = ()=>{
 
-  }
+  setError("")
+  setSuccess("Attendence Registered Successfully!")
+  return
+
+ }
   const sendData = async (id: string, isPresent: boolean) => {
     const response = await fetch("/api/staff/attendence/take-attendence", {
       method: "POST",
@@ -74,9 +79,10 @@ const TakeAttendence = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id,
+        studentId:id,
         isPresent,
-        currentDate
+        currentDate,
+        streamId
       }),
     });
     const result = await response.json();
@@ -110,8 +116,8 @@ const TakeAttendence = () => {
 
      
       <div className="flex flex-col mx-2 md:mx-20   px-10 rounded-sm  ">
-        <table className="min-w-full  items-center  bg-white border border-gray-300">
-          <thead className="bg-gray-100">
+        <table className="min-w-full  items-center  border  ">
+          <thead className="bg-lime-500 border-none">
             <tr>
               <th className="py-2 px-4 border-b">Sl. No</th>
               <th className="py-2 px-4 border-b"> Name</th>
@@ -127,6 +133,7 @@ const TakeAttendence = () => {
             {students &&
               students.map((item: StudentMap, index: number) => (
                 <tr key={item._id} id={`row_${item._id}`}>
+                  <td className={`hi ${item._id}`} hidden   >{isAnyRadioButtonChecked && "unchecked"}</td>
                   <td className="py-2 px-4 border-b text-center">
                     {startIndex + index + 1}
                   </td>
@@ -179,15 +186,11 @@ const TakeAttendence = () => {
           </tbody>
         </table>
         <div className="flex justify-center item-center">
-        <button className="mt-10 bg-green-950 text-center text-white hover:bg-green-900 py-2 px-5 rounded-md  "  onClick={() => {
-           
-            if (isAnyRadioButtonUnchecked()) {
-              alert('Please check attendance for all students!');
-            } else {
-              setSuccess("Attendence Registered Successfully")
-              console.log('Saving attendance...');
-            }
-          }}>Save attendence</button>
+        <button className="mt-10 bg-green-950 text-center text-white hover:bg-green-900 py-2 px-5 rounded-md 
+        
+        "
+        onClick={handleSaveAttendence}
+         >Save attendence</button>
         </div>
         <div className="grid mx-2 md:mx-20 mt-5 gap-10 row-gap-8 sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3 mb-8 "></div>
       </div>

@@ -15,7 +15,7 @@ const MyclassContent = () => {
     if (isStudentAdded) {
       setTimeout(() => {
         setIsStudentAdded(false); // Reset the state after a few seconds
-      }, 3000);
+      }, 5000);
     }
   }, [isStudentAdded]);
   const { data, error } = useSWR(
@@ -54,36 +54,35 @@ const startIndex = (page - 1) * itemsPerPage;
       </div>
       <div className="flex justify-center item-center mt-5">
 
-      <p className="text-green-600 border-green-800 text-[16px] mb-4">
+      <p className="text-emerald-100 border-green-900 text-[16px] mb-4">
                 {isStudentAdded && "Student added successfully!"}
               </p>
       </div>
       <div className="flex flex-col mx-2 md:mx-20 py-2  px-10 rounded-sm  ">
         
-        <table className="min-w-full  items-center mt-10 bg-white border border-gray-300">
-  <thead className="bg-gray-100">
+        <table className="min-w-full  items-center mt-10  border border-emerald-100">
+  <thead className="bg-lime-500">
     <tr>
-      <th className="py-2 px-4 border-b">Sl. No</th>
-      <th className="py-2 px-4 border-b"> Name</th>
-      <th className="py-2 px-4 border-b">Email</th>
-      <th className="py-2 px-4 border-b">Admission No</th>
-      <th className="py-2 px-4 border-b">Class</th>
-      <th className="py-2 px-4 border-b">Branch</th>
-      <th className="py-2 px-4 border-b">Division</th>
+      <th className="py-2 px-4 border-b text-left">Sl. No</th>
+      <th className="py-2 px-4 border-b text-left"> Name</th>
+      <th className="py-2 px-4 border-b text-left">Email</th>
+      <th className="py-2 px-4 border-b text-left">Admission No</th>
+      <th className="py-2 px-4 border-b text-left">Class</th>
+      <th className="py-2 px-4 border-b text-left">Branch</th>
+      <th className="py-2 px-4 border-b text-left">Division</th>
     </tr>
   </thead>
   <tbody>
     {students && 
     students.map((item:StudentMap,index:number) => (
       <tr key={item._id}>
-        <td className="py-2 px-4 border-b text-center">{startIndex + index + 1}</td>
-        <td className="py-2 px-4 border-b text-center">{item.studentName}</td>
-        <td className="py-2 px-4 border-b text-center">{item.email}</td>
-        <td className="py-2 px-4 border-b text-center">{item.admissionNumber}</td>
-        <td className="py-2 px-4 border-b text-center">{item.divisiondata.className}</td>
-        <td className="py-2 px-4 border-b text-center">{item.streamdata.streamName}</td>
-        <td className="py-2 px-4 border-b text-center">{item.divisiondata.division}</td>
-       
+        <td className="py-2 px-4 border-b text-left">{startIndex + index + 1}</td>
+        <td className="py-2 px-4 border-b text-left">{item.studentName}</td>
+        <td className="py-2 px-4 border-b text-left">{item.email}</td>
+        <td className="py-2 px-4 border-b text-left">{item.admissionNumber}</td>
+        <td className="py-2 px-4 border-b text-left">{item.divisiondata.className}</td>
+        <td className="py-2 px-4 border-b text-left">{item.streamdata.streamName}</td>
+        <td className="py-2 px-4 border-b text-left">{item.divisiondata.division}</td>
       </tr>
     ))}
   </tbody>

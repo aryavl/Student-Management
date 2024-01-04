@@ -11,11 +11,11 @@ const TeacherNavbar = () => {
   const { data: session } = useSession();
   
   return (
-    <div className="w-full bg-green-900 text-gray-200 border-b border-green-800">
+    <div className="w-full bg-green-900 text-emerald-100 border-b border-green-800">
       <div className="mx-auto h-16 items-center justify-between px-4 flex">
         <div>
         <Link href="/admin/dashboard">
-            <h1 className="text-xl text-white md:text-4xl">
+            <h1 className="text-xl text-emerald-50 md:text-4xl">
               <span className="font-extrabold font-antialiased">Edu</span>
               <span className="font-serif antialiased text-lime-500">Connect</span>
             </h1>
@@ -25,7 +25,7 @@ const TeacherNavbar = () => {
           <p className="items-center pl-3 pointer-events-none absolute inset-y-0 left-0 flex">
             <span className="items-center justify-center flex">
               <span className="items-center justify-center flex">
-                <span className="h-5 w-5 items-center justify-center text-white flex">
+                <span className="h-5 w-5 items-center justify-center text-emerald-100 flex">
                   <span className="items-center justify-center h-full w-full flex">
                     <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0
                         11-14 0 7 7 0 0114 0z"></path></svg>
@@ -34,14 +34,14 @@ const TeacherNavbar = () => {
               </span>
             </span>
           </p>
-          <input type="search" placeholder="Type to search" className="border  border-white focus:border-white
-              focus:ring-white w-full rounded-lg bg-green-900 px-3 py-2 pb-2 pl-10 pt-2 text-white sm:text-sm"></input>
+          <input type="search" placeholder="Type to search" className="border  border-emerald-100 focus:border-emerald-100
+              focus:ring-emerald-100 w-full rounded-lg bg-green-900 px-3 py-2 pb-2 pl-10 pt-2 text-emerald-100 sm:text-sm"></input>
         </div>
         <div className="ml-auto items-center justify-end md:space-x-6 flex space-x-3">
 
           <div className="relative">
-            <p className="rounded-full bg-lime-500 pb-1 pl-1 pr-1 pt-1 text-white transition-all duration-200
-                hover:bg-white hover:text-lime-500 focus:outline-none">
+            <p className="rounded-full bg-lime-500 pb-1 pl-1 pr-1 pt-1 text-emerald-100 transition-all duration-200
+                hover:bg-emerald-100 hover:text-lime-500 focus:outline-none">
               <span className="items-center justify-center flex">
                 <span className="items-center justify-center flex">
                   <span className="h-6 w-6 items-center justify-center flex">
@@ -54,7 +54,7 @@ const TeacherNavbar = () => {
                 </span>
               </span>
             </p>
-            <p className="items-center rounded-full bg-white px-1.5 py-0.5 text-xs font-semibold text-lime-500 absolute
+            <p className="items-center rounded-full bg-emerald-100 px-1.5 py-0.5 text-xs font-semibold text-lime-500 absolute
                 -right-1 -top-px inline-flex">2</p>
           </div>
           <div className="items-center justify-center relative flex">
@@ -64,8 +64,8 @@ const TeacherNavbar = () => {
             height={100}
             width={100}
             /> */}
-            <img src="https://static01.nyt.com/images/2019/11/08/world/08quebec/08quebec-superJumbo.jpg" className="object-cover btn- mr-2 h-9 w-9 rounded-full bg-white"/>
-            <p className="text-sm font-semibold">{session?.user?.teacherName}</p>
+            <img src="https://static01.nyt.com/images/2019/11/08/world/08quebec/08quebec-superJumbo.jpg" className="object-cover btn- mr-2 h-9 w-9 rounded-full bg-emerald-100"/>
+            <p className="text-sm font-semibold capitalize">{session?.user?.teacherName}</p>
           </div>
         </div>
       </div>

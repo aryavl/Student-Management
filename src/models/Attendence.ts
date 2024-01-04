@@ -8,6 +8,12 @@ const attendenceSchema = new Schema({
   date:{
     type: String
   },
+  streamId:{
+    type:mongoose.Schema.Types.ObjectId
+  },
+  divisionId:{
+    type:mongoose.Schema.Types.ObjectId
+  },
   isPresent:{
     type:Boolean,
     default:false
@@ -15,5 +21,5 @@ const attendenceSchema = new Schema({
 },{timestamps:true}
 )
 
-export default mongoose.models.Attendencelist || mongoose.model('Attendencelist',attendenceSchema)
+export default mongoose.models.Attendencedata || mongoose.model('Attendencedata',attendenceSchema)
 

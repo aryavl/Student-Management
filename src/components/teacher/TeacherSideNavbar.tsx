@@ -9,13 +9,13 @@ const TeacherSideNavbar = () => {
   const { data: session } = useSession();
   
   return (
-    <div className="bg-white text-green-900 md:w-64 md:flex-col lg:flex hidden border-r border-green-800 shadow-sm">
+    <div className="bg-green-900 text-emerald-100 md:w-64 md:flex-col lg:flex hidden border-r border-green-700 shadow-md">
         <div className="h-full flex-col pt-5 flex overflow-y-auto">
           <div className="h-full flex-col flex">
             <div className="px-4 space-y-4">
               <nav className="space-y-1 bg-cover bg-top">
-                <Link href="/staff/dashboard" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 group
-                    block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:tex-white">
+                <Link href="/staff/dashboard" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-emerald-100 group
+                    block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-emerald-100">
                   <span className="items-center justify-center flex">
                     <span className="items-center justify-center flex">
                       <span className="mr-4 h-5 w-5 items-center justify-center flex flex-shrink-0">
@@ -33,17 +33,17 @@ const TeacherSideNavbar = () => {
               
               </nav>
               <div>
-                <p className="px-4 text-xs font-semibold tracking-widest text-gray-400 uppercase">Class</p>
+                <p className="px-4 text-xs font-semibold tracking-widest text-emerald-100 uppercase">Class</p>
                 <nav className="mt-4 space-y-1 bg-cover bg-top">
-                  <Link href="/staff/myclass" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 font-bold group
-                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-white">
+                  <Link href="/staff/myclass" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-emerald-100 font-bold group
+                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-emerald-100">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
                         <span className="mr-4 items-center justify-center flex">
                           <span className="items-center justify-center h-full w-full flex">
-                            <svg className="w-full h-full" width="24" height="24" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="7" rx="7" ry="3" stroke="currentColor" className="text-gray-300" stroke-width="2"></ellipse><path d="M5 13C5 13 5 15.3431 5 17C5 18.6569 8.13401 20 12 20C15.866 20
-                                19 18.6569 19 17C19 16.173 19 13 19 13" stroke="currentColor" className="text-gray-300" stroke-width="2" stroke-linecap="square"></path><path d="M5 7C5 7 5 10.3431 5 12C5 13.6569
-                                8.13401 15 12 15C15.866 15 19 13.6569 19 12C19 11.173 19 7 19 7" stroke="currentColor" className="text-gray-300" stroke-width="2"></path></svg>
+                            <svg className="w-full h-full" width="24" height="24" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="7" rx="7" ry="3" stroke="currentColor" className="text-emerald-100" stroke-width="2"></ellipse><path d="M5 13C5 13 5 15.3431 5 17C5 18.6569 8.13401 20 12 20C15.866 20
+                                19 18.6569 19 17C19 16.173 19 13 19 13" stroke="currentColor" className="text-emerald-100" stroke-width="2" stroke-linecap="square"></path><path d="M5 7C5 7 5 10.3431 5 12C5 13.6569
+                                8.13401 15 12 15C15.866 15 19 13.6569 19 12C19 11.173 19 7 19 7" stroke="currentColor" className="text-emerald-100" stroke-width="2"></path></svg>
                           </span>
                         </span>
                       </span>
@@ -51,8 +51,8 @@ const TeacherSideNavbar = () => {
                     <span>My Class</span>
                   </Link>
                   
-                  <Link href="/admin/timetable" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 font-bold group
-                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-white">
+                  <Link href="/admin/timetable" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-emerald-100 font-bold group
+                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-emerald-100">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
                         <span className="mr-4 h-5 w-5 items-center justify-center flex flex-shrink-0">
@@ -70,10 +70,10 @@ const TeacherSideNavbar = () => {
                 </nav>
               </div>
               <div>
-                <p className="px-4 text-xs font-semibold tracking-widest text-gray-400 uppercase">Attendence</p>
+                <p className="px-4 text-xs font-semibold tracking-widest text-emerald-100 uppercase">Attendence</p>
                 <nav className="mt-4 space-y-1 bg-cover bg-top">
-                  <Link href="/staff/attendence" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 font-bold group
-                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-white">
+                  <Link href="/staff/attendence" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-emerald-100 font-bold group
+                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-emerald-100">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
                         <span className="mr-4 h-5 w-5 items-center justify-center flex flex-shrink-0">
@@ -89,8 +89,8 @@ const TeacherSideNavbar = () => {
                     <span>Take Attendence</span>
                    
                   </Link>
-                  <Link href="/staff/class-attendence" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 font-bold group
-                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-white">
+                  <Link href="/staff/class-attendence" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-emerald-100 font-bold group
+                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-emerald-100">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
                         <span className="mr-4 h-5 w-5 items-center justify-center flex flex-shrink-0">
@@ -105,8 +105,8 @@ const TeacherSideNavbar = () => {
                     <span>View Class Attendence</span>
                    
                   </Link>
-                  <Link href="/admin/staff" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 font-bold group
-                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-white">
+                  <Link href="/admin/staff" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-emerald-100 font-bold group
+                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-emerald-100">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
                         <span className="mr-4 h-5 w-5 items-center justify-center flex flex-shrink-0">
@@ -126,10 +126,10 @@ const TeacherSideNavbar = () => {
                 </nav>
               </div>
               <div>
-                <p className="px-4 text-xs font-semibold tracking-widest text-gray-400 uppercase">Marks</p>
+                <p className="px-4 text-xs font-semibold tracking-widest text-emerald-100 uppercase">Marks</p>
                 <nav className="mt-4 space-y-1 bg-cover bg-top">
-                  <a href="/admin/staff" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 font-bold group
-                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-white">
+                  <a href="/admin/staff" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-emerald-100 font-bold group
+                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-emerald-100">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
                         <span className="mr-4 h-5 w-5 items-center justify-center flex flex-shrink-0">
@@ -146,8 +146,8 @@ const TeacherSideNavbar = () => {
                    
                   </a>
                  
-                  <Link href="/admin/requests" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 font-bold group
-                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-white">
+                  <Link href="/admin/requests" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-emerald-100 font-bold group
+                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-emerald-100">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
                         <span className="mr-4 h-5 w-5 items-center justify-center flex flex-shrink-0">
@@ -160,16 +160,16 @@ const TeacherSideNavbar = () => {
                       </span>
                     </span>
                     <span>Requests</span>
-                                        <span className="ml-auto items-center rounded-full bg-gray-500 px-2 py-0.5 text-xs font-semibold
-                        text-white inline-flex border border-transparent uppercase">15</span>
+                                        <span className="ml-auto items-center rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-semibold
+                        text-green-900 inline-flex border border-transparent uppercase">15</span>
                   </Link>
                 </nav>
               </div>
               <div>
-                <p className="px-4 text-xs font-semibold tracking-widest text-gray-400 uppercase">Assignments</p>
+                <p className="px-4 text-xs font-semibold tracking-widest text-emerald-100 uppercase">Assignments</p>
                 <nav className="mt-4 space-y-1 bg-cover bg-top">
-                  <a href="/admin/staff" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 font-bold group
-                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-white">
+                  <a href="/admin/staff" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-emerald-100 font-bold group
+                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-emerald-100">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
                         <span className="mr-4 h-5 w-5 items-center justify-center flex flex-shrink-0">
@@ -186,8 +186,8 @@ const TeacherSideNavbar = () => {
                    
                   </a>
                  
-                  <Link href="/admin/requests" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 font-bold group
-                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-white">
+                  <Link href="/admin/requests" className="items-center rounded-lg px-4 py-2.5 text-sm font-medium text-emerald-100 font-bold group
+                      block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-emerald-100">
                     <span className="items-center justify-center flex">
                       <span className="items-center justify-center flex">
                         <span className="mr-4 h-5 w-5 items-center justify-center flex flex-shrink-0">
@@ -200,8 +200,8 @@ const TeacherSideNavbar = () => {
                       </span>
                     </span>
                     <span>Submissions</span>
-                                        <span className="ml-auto items-center rounded-full bg-gray-500 px-2 py-0.5 text-xs font-semibold
-                        text-white inline-flex border border-transparent uppercase">15</span>
+                                        <span className="ml-auto items-center rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-semibold
+                        text-green-900 inline-flex border border-transparent uppercase">15</span>
                   </Link>
                 </nav>
               </div>
@@ -210,8 +210,8 @@ const TeacherSideNavbar = () => {
             <div className="mt-auto pb-4">
               <nav className="bg-cover bg-top">
                 
-                <button onClick={()=>{signOut({callbackUrl:'/'})}} className="mx-4 mt-1 items-center rounded-lg px-4 py-2.5 text-sm font-medium text-green-900 font-bold
-                    group block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-white">
+                <button onClick={()=>{signOut({callbackUrl:'/'})}} className="mx-4 mt-1 items-center rounded-lg px-4 py-2.5 text-sm font-medium text-emerald-100 font-bold
+                    group block flex cursor-pointer transition-all duration-200 hover:bg-green-800 hover:text-emerald-100">
                   <span className="items-center justify-center flex">
                     <span className="items-center justify-center flex">
                       <span className="mr-4 items-center justify-center flex">

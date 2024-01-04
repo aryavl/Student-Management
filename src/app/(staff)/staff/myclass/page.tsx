@@ -15,7 +15,7 @@ const MyClass = () => {
         {status === "loading" && <>
         <>
               <div className="flex-col flex">
-                <div className="bg-gray-800 text-gray-200 flex overflow-x-hidden">
+                <div className="bg-black text-emerald-100 flex overflow-x-hidden">
                   <TeacherSideNavbar />
                   <div className="mx-auto flex-col container flex max-w-7xl">
                     <h1>Loading...</h1>
@@ -30,7 +30,7 @@ const MyClass = () => {
             session?.user?.type === 'teacher' ? (
               <>
                 <div className="flex-col flex">
-                  <div className="bg-white text-green-500 flex overflow-x-hidden">
+                  <div className="bg-black text-emerald-100 flex overflow-x-hidden">
                     <TeacherSideNavbar />
                     <div className="mx-auto flex-col container flex max-w-7xl">
                       <MyclassContent />

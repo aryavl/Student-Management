@@ -9,8 +9,8 @@ export const GET =async (req:NextApiRequest) => {
     try {
         const url = new URL(req.url!)
         const searchParams = url.searchParams
-        console.log(searchParams.get('id'));
-        console.log(searchParams.get("page"));
+        // console.log(searchParams.get('id'));
+        // console.log(searchParams.get("page"));
         const page: number = parseInt(searchParams.get("page")!) || 1;
     const pageSize: number = 10;
  

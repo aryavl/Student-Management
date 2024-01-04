@@ -30,7 +30,7 @@ const Attendence = () => {
     {status === 'loading' && (
  <>
  <div className="flex-col flex">
-   <div className="bg-white text-lime-500 flex overflow-x-hidden">
+   <div className="bg-black text-emerald-100 flex overflow-x-hidden">
      <TeacherSideNavbar />
      <div className="mx-auto flex-col container font-bold text-2xl flex justify-center items-center max-w-7xl">
        <h1>Loading ...</h1>
@@ -47,7 +47,7 @@ session ? (
   session?.user?.type === 'teacher' ? (
     <>
       <div className="flex-col flex">
-        <div className="bg-white text-green-900 flex overflow-x-hidden">
+        <div className="bg-black text-emerald-100 flex overflow-x-hidden">
           <TeacherSideNavbar />
           <div className="mx-auto flex-col container flex max-w-7xl">
            <TakeAttendence/>

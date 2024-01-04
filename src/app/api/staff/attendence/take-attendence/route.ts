@@ -5,8 +5,8 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req: Request) => {
   try {
-    const { id, isPresent, currentDate } = await req.json();
-    console.log(id, isPresent, currentDate);
+    const { studentId, isPresent, currentDate,streamId } = await req.json();
+    console.log(studentId, isPresent, currentDate,streamId);
 
     const dateParts = currentDate.split("/");
     const formattedDate = new Date(
@@ -14,12 +14,14 @@ export const POST = async (req: Request) => {
     );
 
     console.log(formattedDate);
-
+      const studentdata= await Student.findOne({_id:studentId})
+      // console.log(studentdata.division,studentdata.stream);
+      
     const attendence = await Attendence.findOne({
-      studentId: id,
+      studentId: studentId,
       date: currentDate,
     });
-    const dateAttendence = await Attendence.findOne({ date: currentDate });
+    // const dateAttendence = await Attendence.findOne({ date: currentDate });
     if (attendence) {
       return NextResponse.json(
         { message: "already marked attendence" },
@@ -28,9 +30,11 @@ export const POST = async (req: Request) => {
     } else {
       if (isPresent) {
         const newattendence = await new Attendence({
-          studentId: id,
+          studentId: studentId,
           date: currentDate,
           isPresent: true,
+          streamId:studentdata.stream,
+          divisionId:studentdata.division
         });
         await newattendence.save();
         return NextResponse.json(
@@ -42,9 +46,11 @@ export const POST = async (req: Request) => {
         );
       } else {
         const newattendence = await new Attendence({
-          studentId: id,
+          studentId: studentId,
           date: currentDate,
           isPresent: false,
+          streamId:studentdata.stream,
+          divisionId:studentdata.division
         });
         await newattendence.save();
         return NextResponse.json(
