@@ -209,8 +209,8 @@ interface StudentMap{
 }
 
 interface GetAttendenceDAtaProp{
-  divId:string,
-  streamId:string
+  divisionId:string,
+  streamIds:string
 }
 interface DivisionProps{
   _id: string;
@@ -259,12 +259,48 @@ interface StudentProps{
   admissionNumber:number,
 }
 interface AttendenceProps{
-  studentId:string,
-  date:string,
-  streamId:string,
-  divisionId:string,
-  isPresent:boolean
+  studentId:[mongoose.Schema.Types.ObjectId];
+ date:Date
+  streamId: mongoose.Schema.Types.ObjectId;
+  divisionId: mongoose.Schema.Types.ObjectId;
+  isPresent: boolean;
 }
 interface AttendenceMap{
-  [key:string]:AttendenceProps
+  _id:mongoose.Schema.Types.ObjectId,
+  studentId: [mongoose.Schema.Types.ObjectId];
+  date: Date;
+  streamId: mongoose.Schema.Types.ObjectId;
+  divisionId: mongoose.Schema.Types.ObjectId;
+  isPresent: boolean;
+  studentdata:StudentProps,
+  divisiondata:DivisionProps
+}
+
+
+type AttendenceData = {
+ 
+  studentId: string;
+  date: Date;
+  streamId: string;
+  divisionId: string;
+  isPresent:boolean
+};
+interface UserType {
+
+    _id?: string;
+    stream:string
+
+}
+
+interface SessionType {
+ 
+  user?: UserType;
+
+}
+
+interface StudentData {
+  studentId: string;
+  streamId: string;
+  isPresent: boolean;
+  divisionId: string;
 }

@@ -2,6 +2,7 @@
 import { useSession } from 'next-auth/react';
 import React, { useState } from 'react'
 import useSWR from 'swr';
+import { GetAttendenceData } from './GetAttendenceData';
 
 const ClassAttendenceShow = () => {
   const { data: session, status } = useSession();
@@ -16,32 +17,16 @@ const ClassAttendenceShow = () => {
       return result;
     }
   );
-  // console.log(data);
   const divisiondata = data?.division;
-  console.log(divisiondata);
+  
    const divisionId= divisiondata && divisiondata[0]?._id
-   console.log(divisionId);
+   const streamId= divisiondata && divisiondata[0]?.stream
+
    
-   const GetAttendenceData: React.FC<GetAttendenceDAtaProp> = ({ divId}) => {
-    console.log(divId);
-    
-      const {data,error} = useSWR(`/api/staff/attendence/class-attendence?id=${divId}`,
-      
-      async(url)=>{
-        const response = await fetch(url)
-        const result = await response.json()
-        return result 
-      })
-      console.log(data);
-      
-      return(
-        <h1>attendence</h1>
-      )
-   }
   
   return (
     <div>ClassAttendence
-      <GetAttendenceData divId={divisionId}/>
+      <GetAttendenceData divisionId={divisionId} streamIds={streamId}/>
     </div>
   )
 }
