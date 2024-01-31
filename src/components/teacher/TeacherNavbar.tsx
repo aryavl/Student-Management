@@ -64,7 +64,7 @@ const TeacherNavbar = () => {
             height={100}
             width={100}
             /> */}
-            <img src="https://static01.nyt.com/images/2019/11/08/world/08quebec/08quebec-superJumbo.jpg" className="object-cover btn- mr-2 h-9 w-9 rounded-full bg-emerald-100"/>
+            {/* <img src="https://static01.nyt.com/images/2019/11/08/world/08quebec/08quebec-superJumbo.jpg" className="object-cover btn- mr-2 h-9 w-9 rounded-full bg-emerald-100"/> */}
             <p className="text-sm font-semibold capitalize">{session?.user?.teacherName}</p>
           </div>
         </div>

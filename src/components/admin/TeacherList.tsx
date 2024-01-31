@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import ModalFormForAddTeacher from "./ModalFormForAddTeacher";
 import useSWR, { mutate } from "swr";
+import Image from "next/image";
 
 const TeacherList = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -119,9 +120,13 @@ searchQuery || filter // If there is a search query or filter
             teachers.map((item: MapItem) => (
               <div className="flex" key={item._id}>
                 {item.image ? (
-                  <img
+                  <Image
                     src="https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
                     className="shadow object-cover mt-0 mr-4 mb-0 ml-0 rounded-full w-20 h-20"
+                    alt="avatar"
+                    width={20}
+                    height={20}
+                    
                   />
                 ) : (
                   <h1 className="shadow object-cover mt-0 mr-4 mb-0 ml-0 rounded-full w-20 h-20 bg-slate-900 flex items-center justify-center capitalize">

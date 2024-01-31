@@ -205,7 +205,7 @@ const SideNavbar = () => {
                 <div className="mt-4 px-2 py-3 border-t">
                   <div className="items-center justify-between flex">
                     <div className="mr-3 w-fit rounded-full relative">
-                      <img src="https://static01.nyt.com/images/2019/11/08/world/08quebec/08quebec-superJumbo.jpg" className="object-cover btn- h-10 w-10 rounded-full"/>
+                      {/* <img src="https://static01.nyt.com/images/2019/11/08/world/08quebec/08quebec-superJumbo.jpg" className="object-cover btn- h-10 w-10 rounded-full"/> */}
                     </div>
                     <div className="ml-0 mr-auto">
                       <p className="text-base font-bold">{session?.user?.firstname}</p>

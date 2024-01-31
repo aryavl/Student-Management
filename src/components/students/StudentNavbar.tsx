@@ -11,7 +11,7 @@ const StudentNavbar = () => {
   const { data: session } = useSession();
   function toggleDropdown() {
     const dropdownMenu = document.getElementById('dropdown-menu');
-    dropdownMenu.classList.toggle('hidden');
+    dropdownMenu?.classList.toggle('hidden');
   }
   return (
     <div className="w-full bg-orange-800 text-white border-b border-orange-800">
@@ -61,12 +61,12 @@ const StudentNavbar = () => {
                 -right-1 -top-px inline-flex">2</p>
           </div>
           <div className="relative inline-block text-left">
-  <div className="items-center justify-center relative flex">
-    <img
+  <div className="items-center justify-center relative flex" onClick={toggleDropdown}>
+    {/* <img
       src="https://static01.nyt.com/images/2019/11/08/world/08quebec/08quebec-superJumbo.jpg"
       className="object-cover btn- mr-2 h-9 w-9 rounded-full bg-white cursor-pointer"
-      onClick={toggleDropdown}
-    />
+      
+    /> */}
     <p className="text-sm font-semibold">{session?.user?.studentName}</p>
   </div>
   

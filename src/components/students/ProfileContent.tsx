@@ -29,8 +29,8 @@ const ProfileContent = () => {
         <li className="mb-2">Name: {studentName}</li>
         <li className="mb-2">Email: {email}</li>
         <li className="mb-2">Phone: {phone}</li>
-        <li className="mb-2">Father's Name: {father}</li>
-        <li className="mb-2">Mother's Name: {mother}</li>
+        <li className="mb-2">Father&apos;s Name: {father}</li>
+        <li className="mb-2">Mother&apos;s Name: {mother}</li>
         {/* Add more details as needed */}
       </ul>
     </div>

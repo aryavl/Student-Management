@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import Head from 'next/head';
 import { isValidEmail, isValidPassword } from "@/components/helpers/ValidationReg";
+import Image from "next/image";
 
 
 const Register = () => {
@@ -75,9 +76,10 @@ const Register = () => {
           <div className=" backdrop-blur-lg bg-clip-padding backdrop-filter bg-white rounded-xl sm:p-10 w-5/6 border-gray-600  relative shadow-lg">
             <div className="grid lg:gap-x-8 lg:grid-cols-12 lg:gap-y-8 grid-cols-1  ">
               <div className="hidden lg:col-span-5 lg:block">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1594608661623-aa0bd3a69d98?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   className="rounded-2xl w-full h-full object-cover"
+                  alt="imgg"
                 />
               </div>
               <div className="pt-8 pr-8 pb-8 pl-8 lg:col-span-7">
