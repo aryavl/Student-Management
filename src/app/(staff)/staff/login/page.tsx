@@ -60,7 +60,7 @@ const StaffLogin = () => {
       setError("");
       router.replace("/staff/dashboard");
     }
-  }, []);
+  }, [router,session]);
   const handleGoogleSignIn = async () => {
     try {
       await signIn("google", { callbackUrl: "/admin/dashboard" });

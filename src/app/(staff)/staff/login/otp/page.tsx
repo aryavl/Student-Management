@@ -51,7 +51,7 @@ console.log(otp);
       setError("");
       router.replace("/staff/dashboard");
     }
-  }, []);
+  }, [router,session,staffEmail]);
  
 
   return (

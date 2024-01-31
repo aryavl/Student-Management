@@ -50,7 +50,7 @@ const StudentLogin = () => {
       setError("");
       router.replace("/student/dashboard");
     }
-  }, []);
+  }, [router,session]);
   const handleGoogleSignIn = async () => {
     try {
       await signIn("google", { callbackUrl: "/student/dashboard" });

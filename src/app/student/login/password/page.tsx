@@ -62,7 +62,7 @@ const PasswordPage = () => {
       setError("");
       router.replace("/student/dashboard");
     }
-  }, []);
+  }, [router,session,studentEmail]);
 
   return (
     <>

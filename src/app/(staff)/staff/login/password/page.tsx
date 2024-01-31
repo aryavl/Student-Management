@@ -59,7 +59,7 @@ const PasswordPage = () => {
       setError("");
       router.replace("/staff/dashboard");
     }
-  }, []);
+  }, [router,session,staffEmail]);
 
   return (
     <>
