@@ -1,7 +1,7 @@
 import Stream from "@/models/Stream";
 import Teacher from "@/models/Teachers";
 import connect from "@/utils/db";
-import { NextApiRequest } from "next";
+
 import { NextResponse } from "next/server";
 
 export const GET = async (request: Request) => {
