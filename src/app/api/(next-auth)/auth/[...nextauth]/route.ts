@@ -22,6 +22,7 @@ interface CredentialType{
   password: string;
   role: "admin" | "teacher" | "student"
 }
+
 export const authOptions:{
   providers: (OAuthConfig<GoogleProfile> | CredentialsConfig<{}>)[];
   pages: {
@@ -30,11 +31,11 @@ export const authOptions:{
       oauth: string;
   };
   callbacks: {
-    signIn({ account, profile, email, credentials }: any): Promise<true | st>;
+    signIn({ account, profile, email, credentials }: any): Promise<any>;
     jwt({ token, user, trigger, session }: any): Promise<any>;
     session({ session, token }: any): Promise<any>;
 };
-//  authorize: (credentials: Record<never, string> | undefined, req: Pick<RequestInternal, "body" | "method" | "query" | "headers">) => Awaitable<UserType|null|any>
+ authorize: (credentials: Record<never, string> | undefined, req: Pick<RequestInternal, "body" | "method" | "query" | "headers">) => Awaitable<any>
   
 } = {
   providers: [
@@ -45,7 +46,7 @@ export const authOptions:{
     CredentialProvider({
       name: "credentials",
       credentials: {},
-      async authorize(credentials: CredentialType) {
+      async authorize(credentials: Record<never, string> | undefined, req: Pick<RequestInternal, "body" | "method" | "query" | "headers">) {
         console.log("credentialsss", credentials);
 
         const { email, password, role } = credentials as {
@@ -171,9 +172,9 @@ export const authOptions:{
 
     },
   },
-  // authorize: function (credentials: Record<never, string> | undefined, req: Pick<RequestInternal, "body" | "method" | "query" | "headers">) {
-  //   throw new Error("Function not implemented.");
-  // }
+  authorize: function (credentials: Record<never, string> | undefined, req: Pick<RequestInternal, "body" | "method" | "query" | "headers">) {
+    throw new Error("Function not implemented.");
+  }
 };
 
 
