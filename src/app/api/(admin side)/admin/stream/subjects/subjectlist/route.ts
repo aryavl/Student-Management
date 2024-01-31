@@ -3,7 +3,7 @@ import Subjects from "@/models/Subjects";
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-export const GET = async (req: NextApiRequest) => {
+export const GET = async (req: Request) => {
   try {
     const url = new URL(req.url!);
     const searchParams = url.searchParams;
@@ -28,7 +28,7 @@ export const GET = async (req: NextApiRequest) => {
   }
 };
 
-export const PATCH =async (req:NextApiRequest) => {
+export const PATCH =async (req:Request) => {
     try {
         const url = new URL(req.url!)
         const searchParams = url.searchParams

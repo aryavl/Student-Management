@@ -2,7 +2,7 @@ import Stream from "@/models/Stream";
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-export const GET = async (Request: NextApiRequest) => {
+export const GET = async (Request: Request) => {
   try {
     const stream = await Stream.find();
     return NextResponse.json(

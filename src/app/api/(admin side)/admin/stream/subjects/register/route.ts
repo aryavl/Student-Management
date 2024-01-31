@@ -3,7 +3,7 @@ import Subjects from "@/models/Subjects";
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-export const POST =async (req:NextApiRequest) => {
+export const POST =async (req:Request) => {
     try {
         const {stream, streamId,subject} = await req.json()
         const existing = await Subjects.findOne({subjectName: { $regex: new RegExp(`^${subject}$`, 'i') } ,stream:streamId})
@@ -31,7 +31,7 @@ export const POST =async (req:NextApiRequest) => {
     }
 }
 
-export const GET =async (req:NextApiRequest) => {
+export const GET =async (req:Request) => {
 try {
     const url = new URL(req.url!)
     const searchParams = url.searchParams

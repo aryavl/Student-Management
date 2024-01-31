@@ -2,7 +2,7 @@ import Stream from "@/models/Stream";
 import { NextApiRequest } from "next"
 import { NextResponse } from "next/server";
 
-export const POST =async (Request:NextApiRequest) => {
+export const POST =async (Request:Request) => {
     try {
         const {streamName} = await Request.json()
         const existing = await Stream.findOne({ streamName: { $regex: new RegExp(`^${streamName}$`, 'i') } });

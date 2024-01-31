@@ -5,9 +5,9 @@ import Teacher from "@/models/Teachers";
 import connect from "@/utils/db";
 import mongoose from "mongoose";
 import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async (request: NextApiRequest) => {
+export const POST = async (request: Request) => {
   try {
     // console.log("apiii activated");
 
@@ -56,7 +56,7 @@ export const POST = async (request: NextApiRequest) => {
   }
 };
 
-export const GET = async (request: NextApiRequest) => {
+export const GET = async (request: Request) => {
   try {
     await connect();
     const divisions = await DivisionList.find({ isList: true });
@@ -90,7 +90,7 @@ return NextResponse.json(
   }
 };
 
-export const DELETE = async (request: NextApiRequest) => {
+export const DELETE = async (request: Request) => {
   try {
     
     // const id = request.query.id 

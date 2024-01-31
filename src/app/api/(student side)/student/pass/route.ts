@@ -30,35 +30,3 @@ export const POST = async (req: Request) => {
   }
 };
 
-// export const GET = async (req: NextApiRequest) => {
-//   try {
-//     const url = new URL(req.url!);
-//     const searchParams = url.searchParams;
-//     const email = searchParams.get("email");
-//     console.log(email);
-//     const student = await Student.findOne({ email });
-//     console.log(student);
-    
-//     if (student.isVerified) {
-//       return NextResponse.json(
-//         { message: "student already verified " },
-//         { status: 200, statusText: "student already verified" }
-//       );
-//     }else{
-//       return NextResponse.json({
-//         message:"student is not verified"
-//       },{
-//         status:404,
-//         statusText:'"student is not verified"'
-//       })
-//     }
-//   } catch (error: any) {
-//     return NextResponse.json(
-//       { message: "error" },
-//       {
-//         status: 500,
-//         statusText: error.message,
-//       }
-//     );
-//   }
-// };

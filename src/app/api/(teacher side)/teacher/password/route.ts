@@ -29,7 +29,7 @@ export const POST = async (req: Request) => {
   }
 };
 
-export const GET = async (req: NextApiRequest) => {
+export const GET = async (req: Request) => {
   try {
     const url = new URL(req.url!);
     const searchParams = url.searchParams;

@@ -8,7 +8,7 @@ import { NextApiRequest } from 'next'
 import {NextResponse} from 'next/server'
 
 
-export const POST = async(request : NextApiRequest)=>{
+export const POST = async(request : Request)=>{
 try {
     
     const { teacherName, email, stream, subject } = await request.json();
@@ -51,7 +51,7 @@ try {
 }
 
 
-export const GET = async(req:NextApiRequest)=>{
+export const GET = async(req:Request)=>{
     try {
         // console.log("get");
         

@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
-export const GET = async (req: NextApiRequest) => {
+export const GET = async (req: Request) => {
   console.log("hello from sever");
   try {
     // res.status(200).json({ name: "John Doe" });
@@ -23,7 +23,7 @@ export const GET = async (req: NextApiRequest) => {
     const pageSize: number = 10;
  
     const skip = (page - 1) * pageSize;
-    const filterObjectId =new mongoose.Types.ObjectId(filter) 
+    const filterObjectId =new mongoose.Types.ObjectId(filter!) 
     let aggregationPipeline:any[] = [
       {
         $lookup: {

@@ -6,7 +6,7 @@ import { NextApiRequest } from 'next'
 import {NextResponse} from 'next/server'
 
 
-export const POST = async(request : NextApiRequest)=>{
+export const POST = async(request : Request)=>{
 try {
     
     const { firstname, lastname, email, phone, password } = await request.json();

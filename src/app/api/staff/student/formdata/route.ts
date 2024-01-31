@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-export const GET =async (req:NextApiRequest) => {
+export const GET =async (req:Request) => {
     try {
         const url = new URL(req.url!)
         const searchParams = url.searchParams
@@ -22,7 +22,7 @@ export const GET =async (req:NextApiRequest) => {
         const teacher = await Teachers.aggregate([
             {
                 $match: {
-                    _id: new mongoose.Types.ObjectId(id)
+                    _id: new mongoose.Types.ObjectId(id!)
                 } 
             },
             {
@@ -56,7 +56,7 @@ export const GET =async (req:NextApiRequest) => {
             {
                 $match: {
                     
-                    "classTeacher": new mongoose.Types.ObjectId(id)
+                    "classTeacher": new mongoose.Types.ObjectId(id!)
                 }
             },
             {

@@ -2,7 +2,7 @@ import Teachers from "@/models/Teachers";
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-export const POST = async (req: NextApiRequest) => {
+export const POST = async (req: Request) => {
   try {
     console.log("post login staff");
 
