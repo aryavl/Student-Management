@@ -32,7 +32,7 @@ const ModalFormForAddTeacher = () => {
     console.log(id);
     const res = await fetch(`/api/admin/teacher/registerdata?id=${id}`);
     const result = await res.json();
-    console.log(result);
+    console.log(result?.subject);
    
     setSubjectList(result?.subject)
   };
@@ -157,6 +157,7 @@ const ModalFormForAddTeacher = () => {
                     handleStreamChange(e.target.value);
                   }}
                 >
+                  <option>Select</option>
                   {stream &&
                     stream.map((item: MapStream) => (
                       <option value={item._id} key={item._id}>

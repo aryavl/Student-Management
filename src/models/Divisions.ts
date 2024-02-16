@@ -17,7 +17,7 @@ const divisionSchemas = new Schema({
         default:true
     },
     students:[{
-        type:String
+        type:mongoose.Schema.Types.ObjectId
     }    
     ],
     classTeacher:{

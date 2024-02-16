@@ -1,15 +1,17 @@
 import Divisions from "@/models/Divisions";
+import Stream from "@/models/Stream";
 import Student from "@/models/Student";
+import Subjects from "@/models/Subjects";
 import Teachers from "@/models/Teachers";
 import mongoose from "mongoose";
 import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET =async (req:Request) => {
+export const GET =async (req:NextRequest) => {
     try {
         const url = new URL(req.url!)
         const searchParams = url.searchParams
-        // console.log(searchParams.get('id'));
+        console.log(searchParams.get('id'));
         // console.log(searchParams.get("page"));
         const page: number = parseInt(searchParams.get("page")!) || 1;
     const pageSize: number = 10;
@@ -18,40 +20,43 @@ export const GET =async (req:Request) => {
         const id = searchParams.get('id');
         const t= await Teachers.findOne({_id:id})
         console.log(t,"teachr");
-        
-        const teacher = await Teachers.aggregate([
-            {
-                $match: {
-                    _id: new mongoose.Types.ObjectId(id!)
-                } 
-            },
-            {
-                    $lookup: {
-                        from: "streams",  
-                        localField: "stream",
-                        foreignField: "_id",
-                        as: "streamdata"
-                    }
+        const stream = await Stream.findOne({_id:id})
+        console.log(stream);
+        const teacher = await Teachers.find({stream:id,isClassTeacher:false})
+
+        // const teacher = await Teachers.aggregate([
+        //     {
+        //         $match: {
+        //             _id: new mongoose.Types.ObjectId(id!)
+        //         } 
+        //     },
+        //     {
+        //             $lookup: {
+        //                 from: "streams",  
+        //                 localField: "stream",
+        //                 foreignField: "_id",
+        //                 as: "streamdata"
+        //             }
                 
-            },
-            {
-                    $lookup: {
-                        from: "subjects",  
-                        localField: "subject",
-                        foreignField: "_id",
-                        as: "subjectdata"
-                    }
+        //     },
+        //     {
+        //             $lookup: {
+        //                 from: "subjects",  
+        //                 localField: "subject",
+        //                 foreignField: "_id",
+        //                 as: "subjectdata"
+        //             }
                 
-            },
-            {
-                $unwind: '$streamdata'
-              },
-              {
-                $unwind: '$subjectdata'
-              },
+        //     },
+        //     {
+        //         $unwind: '$streamdata'
+        //       },
+        //       {
+        //         $unwind: '$subjectdata'
+        //       },
 
            
-        ]);
+        // ]);
         const division =await Divisions.aggregate([
             {
                 $match: {
@@ -126,7 +131,7 @@ export const GET =async (req:Request) => {
         
         console.log(division,'<---- stuu');
         return NextResponse.json({
-            teacher,division,students
+            teacher,division,students,stream
         }, { status: 200, statusText: 'OK' });
         
     } catch (error:any) {

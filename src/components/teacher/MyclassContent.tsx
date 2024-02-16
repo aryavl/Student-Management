@@ -49,7 +49,7 @@ const startIndex = (page - 1) * itemsPerPage;
       </div>
       <div className="flex justify-center  item-center">
 
-          <AddStudent id={id} setIsStudentAdded={setIsStudentAdded}/>
+          <AddStudent id={id} setIsStudentAdded={setIsStudentAdded} totalStudents={0}/>
 
       </div>
       <div className="flex justify-center item-center mt-5">

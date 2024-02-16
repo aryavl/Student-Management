@@ -128,6 +128,7 @@ interface ParamsType {
 
 interface SingleStreamContentProps {
   id: string;
+  totalStudents:number,
   setIsStudentAdded: (value: boolean) => void;
 }
 interface SingleClassDetailProps{

@@ -25,6 +25,7 @@ const SingleStream = ({params}:ParamsType) => {
     
 //     if (error) return <p>Error fetching data</p>;
 //     if (!data) return <p>Loading...</p>;
+
   return (
     <>
       
@@ -46,15 +47,17 @@ const SingleStream = ({params}:ParamsType) => {
 
       {status === 'authenticated' && (
 session ? (
-  session?.user?.type === "admin" ? (
+  session?.user?.type  === "admin" ? (
     <>
       <div className="flex-col flex">
         <div className="bg-gray-800 text-gray-200 flex overflow-x-hidden">
           <SideNavbar />
           <div className="mx-auto flex-col container flex max-w-7xl">
-            <SingleStreamContent id={id}/>
+            <SingleStreamContent id={id}  setIsStudentAdded={function (value: boolean): void {
+                      throw new Error('Function not implemented.');
+                    } }/>
           </div>
-        </div>
+        </div> 
       </div>
     </>
   ) : (

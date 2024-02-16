@@ -44,16 +44,15 @@ export const authOptions:{
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     }),
     CredentialProvider({
-      name: "credentials",
-      credentials: {},
-      async authorize(credentials: Record<never, string> | undefined, req: Pick<RequestInternal, "body" | "method" | "query" | "headers">) {
+      name: "Credentials",
+     
+      async authorize(credentials: Record<string, string>, req: Request, res: Response) {
         console.log("credentialsss", credentials);
-
-        const { email, password, role } = credentials as {
+        const { email, password, role } = credentials as unknown as {
           email: string;
           password: string;
           role: "admin" | "teacher" | "student";
-        };
+        }; 
         if (!role || (role !== 'admin' && role !== 'teacher' && role !== 'student'))
           throw new Error("Invalid Role.");
         try {
@@ -69,15 +68,17 @@ export const authOptions:{
             if (!passwordMatch) {
               throw new Error("Incorrect password");
             }
-
-            return {
-              id: admin._id,
-              email: admin.email,
-              firstname: admin.firstname,
-              lastname: admin.lastname,
-              name: `${admin.firstname} ${admin.lastname}`,
-              role: 'admin'
-            };
+            if(admin){
+              return Promise.resolve({
+                id: admin._id,
+                email: admin.email,
+                firstname: admin.firstname,
+                lastname: admin.lastname,
+                name: `${admin.firstname} ${admin.lastname}`,
+                role: 'admin'
+              });
+            }
+           
           }
           if (role === 'teacher') {
             console.log("inside teacher");
@@ -94,16 +95,19 @@ export const authOptions:{
             if (!passwordMatch) {
               throw new Error("Incorrect password");
             }
-
-            return {
-              id: teacher._id,
-              email: teacher.email,
-              teacherName: teacher.teacherName,
-              isVerified: teacher.isVerified,
-              isClassTeacher: teacher.isClassTeacher,
-              role: "teacher"
-            };
+            if(teacher){
+              return Promise.resolve({
+                id: teacher._id,
+                email: teacher.email,
+                teacherName: teacher.teacherName,
+                isVerified: teacher.isVerified,
+                isClassTeacher: teacher.isClassTeacher,
+                role: "teacher"
+              });
+            }
+           
           }
+
           if (role === 'student') {
             console.log("inside student");
 
@@ -119,14 +123,16 @@ export const authOptions:{
             if (!passwordMatch) {
               throw new Error("Incorrect password");
             }
-
-            return {
-              id: student._id,
-              email: student.email,
-              studentName: student.studentName,
-              isVerified: student.isVerified,
-              role: "teacher"
-            };
+            if(student){
+              return Promise.resolve({
+                id: student._id,
+                email: student.email,
+                studentName: student.studentName,
+                isVerified: student.isVerified,
+                role: "teacher"
+              })
+            }
+            
           }
         } catch (error: any) {
           console.error("Error in credential auth ==>", error.message);
@@ -178,7 +184,7 @@ export const authOptions:{
 };
 
 
-export const handler = NextAuth(authOptions);
+ const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
 

@@ -5,8 +5,8 @@ import AddDivisionModal from "./AddDivisionModal";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const SingleStreamContent: React.FC<SingleStreamContentProps> = ({ id }) => {
-  console.log(id);
+const SingleStreamContent: React.FC<SingleStreamContentProps> = ({ id }:{id:string}) => {
+  console.log();
   const streamId= id
   const router= useRouter()
   const { data, error } = useSWR(
@@ -40,7 +40,7 @@ const SingleStreamContent: React.FC<SingleStreamContentProps> = ({ id }) => {
       <div className="flex flex-col mx-2 md:mx-20 py-2  px-10 rounded-sm  ">
         <div className="flex items-center mx-2 md:mx-20 bg-gray-700 py-2 text-white font-bold justify-between px-10 rounded-sm ">
           <h1>Plus One</h1>
-          <AddDivisionModal id={id} />
+          <AddDivisionModal streamId={streamId} />
         </div>
 
         <div className="grid mx-2 md:mx-20 mt-5 gap-10 row-gap-8 sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3 mb-8 ">
@@ -62,7 +62,7 @@ const SingleStreamContent: React.FC<SingleStreamContentProps> = ({ id }) => {
 
         <div className="flex items-center mx-2 md:mx-20 bg-gray-700 py-2 text-white font-bold justify-between px-10 rounded-sm">
           <h1>Plus Two</h1>
-          <AddDivisionModal id={id} />
+          <AddDivisionModal streamId={id} />
         </div>
 
         <div className="grid mx-2 md:mx-20 mt-5 gap-10 row-gap-8 sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3 mb-8 ">

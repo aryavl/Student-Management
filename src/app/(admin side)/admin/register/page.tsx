@@ -80,6 +80,8 @@ const Register = () => {
                   src="https://images.unsplash.com/photo-1594608661623-aa0bd3a69d98?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   className="rounded-2xl w-full h-full object-cover"
                   alt="imgg"
+                  height={1000}
+                  width={1548}
                 />
               </div>
               <div className="pt-8 pr-8 pb-8 pl-8 lg:col-span-7">

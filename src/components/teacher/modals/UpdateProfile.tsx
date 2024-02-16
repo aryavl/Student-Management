@@ -1,29 +1,32 @@
 "use client";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useFormStatus } from "react-dom";
 import useSWR from "swr";
 
-const AddDivisionModal = ({ streamId }:{streamId:string}) => {
+const UpdateProfile = ({ id }:{id:string}) => {
+  console.log(id);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [errorr, setError] = useState("");
   
+  const {pending} = useFormStatus()
   const router = useRouter();
-// console.log(streamId);
 
   const { data, error } = useSWR(
-    `http://localhost:3000/api/staff/student/formdata?id=${streamId}`,
+    `/api/staff/profile?id=${id}`,
     async (url) => {
       const response = await fetch(url);
       const result = await response.json();
       return result;
     }
   );
+  console.log(data?.teacher);
+  const teacher = data?.teacher
 
-  console.log(data);
-  const teachers = data?.teacher
-  const streams = data?.stream;
-  console.log(streams);
-  
+  const divisiondata= data?.division
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -31,33 +34,31 @@ const AddDivisionModal = ({ streamId }:{streamId:string}) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  // const handleStreamChange = async () => {
-  //   console.log(streamId);
-  //   const res = await fetch(`/api/admin/divisionregister?id=${streamId}`);
-  //   const result = await res.json();
-  //   console.log(result);
 
-  //   setTeachers(result?.teacher);
-  // };
   const handleSubmit = async (e: HandleSubmitType) => {
     e.preventDefault();
     // console.log(e.target[0].value,e.target[1].value,e.target[2].value);
-    const className = e.target[0].value;
-    const stream = e.target[1].value;
-    const division = e.target[2].value;
-    const classTeacher = e.target[3].value;
-    console.log(className, stream, division, classTeacher);
+    const studentName = e.target[0].value;
+    const email = e.target[1].value;
+    const admissionNo = e.target[2].value;
+    const dateOfJoining = e.target[3].value;
+   
+    const stream = e.target[4].value;
+    const division = e.target[5].value;
+    console.log(studentName, email, admissionNo, dateOfJoining, stream, division);
 
-    const res = await fetch("/api/division", {
+    const res = await fetch("/api/staff/student", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        className,
+        studentName,
+        email,
+        admissionNo,
+        dateOfJoining,
         stream,
         division,
-        classTeacher,
       }),
     });
     console.log(res);
@@ -67,7 +68,9 @@ const AddDivisionModal = ({ streamId }:{streamId:string}) => {
     }
     if (res.status === 200) {
       setError("");
-      router.push(`/admin/streams/${streamId}`);
+      
+    
+      router.push(`/staff/myclass`)
       closeModal();
     }
   };
@@ -76,18 +79,15 @@ const AddDivisionModal = ({ streamId }:{streamId:string}) => {
     <>
       <button
         onClick={openModal}
-        className="bg-white text-gray-900 font-bold rounded-md pl-3 pr-3 text-lg justify-center items-center overflow-hidden relative focus:outline-none group"
+        className="text-emerald-100 bg-green-800 font-bold rounded-md pl-3 pr-3 text-lg flex justify-center items-center overflow-hidden relative focus:outline-none group transition duration-300 delay-150 hover:delay-300 "
       >
-        <span className="transition-transform px-4 py-1 transform scale-75 group-hover:scale-0 inline-block opacity-100 group-hover:hidden font-bold text-lg">
-          +
-        </span>
-        <span className="transition-transform px-4 py-1 transform scale-0 group-hover:scale-75 hidden group-hover:inline-block ml-0 opacity-0 group-hover:opacity-100">
-          Add Division
-        </span>
+
+          Update Profile
+        
       </button>
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
-          <div className="bg-white p-8 rounded shadow-md w-1/2">
+          <div className="bg-white p-8 rounded shadow-md w-1/2 overflow-y-auto">
             <button
               onClick={closeModal}
               className="absolute top-2 right-2 text-gray-700 hover:text-gray-900"
@@ -107,48 +107,49 @@ const AddDivisionModal = ({ streamId }:{streamId:string}) => {
                 ></path>
               </svg>
             </button>
-
+            <div className="form-container overflow-y-auto max-h-80">
             <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label
-                  htmlFor="username"
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
-                  Class:
-                </label>
-                <select className="border w-full py-2 px-3 text-gray-700">
-                  <option value="plus one">Plus One</option>
-                  <option value="plustwo">Plus Two</option>
-                </select>
-              </div>
 
               <div className="mb-4">
                 <label
                   htmlFor="username"
                   className="block text-gray-700 text-sm font-bold mb-2"
                 >
-                  Stream:
-                </label>
-                <select
-                  className="border w-full py-2 px-3 text-gray-700"
-                 
-                >
-                  
-                    <option value={streams?._id} >
-                      {streams?.streamName}
-                    </option>
-                  
-                </select>
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="username"
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
-                  Division:
+                  Name:
                 </label>
                 <input
                   type="text"
+                  id="name"
+                  name="name"
+                  value={teacher?.teacherName}
+                  className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label
+                  htmlFor="username"
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                >
+                  Email:
+                </label>
+                <input
+                  type="email"
+                  id="name"
+                  name="name"
+                  value={teacher?.email}
+                  className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="username"
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                >
+                  Admission Number:
+                </label>
+                <input
+                  type="number"
                   id="name"
                   name="name"
                   className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -159,14 +160,53 @@ const AddDivisionModal = ({ streamId }:{streamId:string}) => {
                   htmlFor="username"
                   className="block text-gray-700 text-sm font-bold mb-2"
                 >
-                  Class Teacher:
+                  Date Of Joining:
                 </label>
-                <select className="border w-full py-2 px-3 text-gray-700">
-                  {teachers&& teachers?.map((item: Teacher) => (
-                    <option value={item._id} key={item._id}>
-                      {item.teacherName}
-                    </option>
+                <input
+                  type="date"
+                  id="name"
+                  name="name"
+                  className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+              </div>
+          
+             
+
+              <div className="mb-4">
+                <label
+                  htmlFor="username"
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                >
+                  Stream:
+                </label>
+                <select
+                  className="border w-full py-2 px-3 text-gray-700"
+                  disabled
+                >
+                   
+              
+                  {
+                  divisiondata &&
+                  divisiondata.map((item:DivisionMap)=>(
+                    <option value={item.stream} key={item._id}>{item.streamdata.streamName}</option>
                   ))}
+                </select>
+              </div>
+
+              <div className="mb-4">
+                <label
+                  htmlFor="username"
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                >
+                  Division:
+                </label>
+                <select className="border w-full py-2 px-3 text-gray-700" disabled>
+                  {divisiondata &&
+                    divisiondata.map((item: DivisionMap) => (
+                      <option value={item._id} key={item._id}>
+                        {item.division}
+                      </option>
+                    ))}
                 </select>
               </div>
               <p className="text-red-600 text=[16px] mb-4">
@@ -182,12 +222,14 @@ const AddDivisionModal = ({ streamId }:{streamId:string}) => {
                 </button>
                 <button
                   type="submit"
+                  disabled={pending}
                   className="bg-gray-900 text-white px-8 py-2 rounded"
                 >
-                  Add
+                  {pending ? "Submitting...":"Submit"}
                 </button>
               </div>
             </form>
+            </div>
           </div>
         </div>
       )}
@@ -195,4 +237,4 @@ const AddDivisionModal = ({ streamId }:{streamId:string}) => {
   );
 };
 
-export default AddDivisionModal;
+export default UpdateProfile;

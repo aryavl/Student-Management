@@ -4,7 +4,7 @@ import useSWR from "swr";
 
 export const GetAttendenceData: React.FC<GetAttendenceDAtaProp> = ({ divisionId,streamIds}) => {
     console.log(divisionId,streamIds);
-    const [date,setDate]=useState<string[]>([]);
+    const [date,setDate]=useState<string[]|unknown[]>([]);
 
       const {data,error} = useSWR(`/api/staff/attendence/class-attendence?divisionId=${divisionId}&streamId=${streamIds}`,
 

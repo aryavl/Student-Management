@@ -1,3 +1,4 @@
+import Divisions from "@/models/Divisions";
 import DivisionList from "@/models/Divisions";
 import Stream from "@/models/Stream";
 import Student from "@/models/Student";
@@ -53,8 +54,11 @@ export const POST = async (request: Request) => {
       stream: streamObjectId,
       division: divisionObjectId,
     });
-
     await newStudent.save();
+    // console.log(newStudent._id);
+    const studentId = new mongoose.Types.ObjectId(newStudent._id);
+    
+    const divisionUpdate = await Divisions.findByIdAndUpdate({_id:division},{$push: {students: studentId}},)
 
     return NextResponse.json(
       { message: "Student registered successfully" },
